@@ -1,18 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rtv1.c                                             :+:      :+:    :+:   */
+/*   list.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: ibtraore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/14 18:18:27 by thou              #+#    #+#             */
-/*   Updated: 2017/04/14 18:18:49 by thou             ###   ########.fr       */
+/*   Created: 2017/03/13 05:48:05 by ibtraore          #+#    #+#             */
+/*   Updated: 2017/05/17 17:55:16 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-int main()
+void	lst_add_back(t_list **lst, t_list *new)
 {
+	t_list	*tmp;
 
+	if (*lst == NULL)
+		*lst = new;
+	else
+	{
+		tmp = *lst;
+		while (tmp->next)
+			tmp = tmp->next;
+		tmp->next = new;
+	}
 }
