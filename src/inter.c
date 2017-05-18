@@ -46,9 +46,7 @@ double	cone_inter(t_obj *obj, t_ray *ray)
 {
 	double		t;
 	t_solver	s;
-	double		m;
 
-	m = 0;
 	s.dist = subvect(&obj->pos, &ray->pos);
 	normalize(&obj->rot);
 	s.a = prodscal(&ray->dir, &ray->dir) - (1 + pow(tan(obj->size), 2)) *

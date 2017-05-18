@@ -41,10 +41,3 @@ t_vector	opposite(t_vector *v)
 	n.w = v->w;
 	return (n);
 }
-
-double		ft_clamp(double value, int a, int b)
-{
-	value = (value > b) ? b : value;
-	value = (value < a) ? a : value;
-	return (value);
-}

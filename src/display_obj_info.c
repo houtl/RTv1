@@ -64,7 +64,7 @@ void		display_rot_info(t_env *e)
 	ft_strdel(&s2);
 }
 
-void		display_info1(t_env *e, t_obj *obj)
+void		display_info1(t_env *e)
 {
 	if (e->is_obj_selected)
 	{

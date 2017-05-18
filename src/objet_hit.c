@@ -105,7 +105,7 @@ void	draw_obj(t_env *e)
 	display_cam_info(e);
 	if (e->is_obj_selected == 1)
 	{
-		display_info1(e, e->hit_obj);
+		display_info1(e);
 		display_info2(e, e->hit_obj);
 	}
 }

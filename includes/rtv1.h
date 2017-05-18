@@ -162,7 +162,7 @@ typedef struct			s_env
 	int					total_light;
 }						t_env;
 
-void					display_info1(t_env *e, t_obj *obj);
+void					display_info1(t_env *e);
 void					display_info2(t_env *e, t_obj *obj);
 t_color					get_color(int color);
 t_color					get_hit_color(t_list *list, t_obj *light, t_obj *obj,

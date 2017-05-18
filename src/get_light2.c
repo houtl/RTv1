@@ -16,7 +16,6 @@ void		light_position(t_env *e)
 {
 	t_list	*tmp;
 	t_obj	*obj;
-	t_list	*new;
 	int		i;
 
 	tmp = e->obj;

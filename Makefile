@@ -25,7 +25,7 @@ NAME		=	rtv1
 FLAG		=	-Wall -Werror -Wextra
 FLAGMLX		=	-lmlx -framework OpenGL -framework Appkit
 SRC_DIR		=	src/
-SRC_BASE	=	ft_ftoa.c clear.c file_to_cam.c inter_utils.c rotate_event.c\
+SRC_BASE	=	ft_atof.c clear.c file_to_cam.c inter_utils.c rotate_event.c\
 				closest_t.c file_to_obj.c light_composantes.c translate_event.c\
 				color.c get.c list.c translate_light.c copy.c get_light2.c main.c vector.c\
 				display_cam_info.c get_scene.c mouse_hook.c vector2.c display_obj_info.c\

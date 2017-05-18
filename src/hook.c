@@ -47,7 +47,7 @@ int				key_hook_func(int key, t_env *e)
 	e->aa = (e->aa < 1) ? 1 : e->aa;
 	if (key == B)
 		e->aa = 1;
-	printf("[key : %d ]\n", key);
+	ft_printf("[key : %d ]\n", key);
 	translate(key, e);
 	rotate_camera(key, e);
 	draw_obj(e);
