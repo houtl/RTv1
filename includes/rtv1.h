@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rtv1.h                                              :+:      :+:    :+:   */
+/*   rtv1.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibtraore <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/11 10:54:17 by ibtraore          #+#    #+#             */
-/*   Updated: 2017/05/17 18:14:57 by thou             ###   ########.fr       */
+/*   Created: 2017/05/18 16:50:30 by thou              #+#    #+#             */
+/*   Updated: 2017/05/19 18:18:31 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,25 +22,6 @@
 # define SAFEMALL(x) if (!x) return (NULL);
 # define MAX_LIGHT 10
 
-# define Q 12
-# define W 13
-# define E 14
-# define D 2
-# define A 0
-# define S 1
-
-# define I 34
-# define O 31
-# define U 32
-# define J 38
-# define K 40
-# define L 37
-
-# define R 15
-# define C 8
-# define V 9
-# define B 11
-# define O 31
 # define TRUE 1
 # define FALSE 0
 # define FOC 2.0
@@ -160,88 +141,197 @@ typedef struct			s_env
 	int					is_obj_selected;
 	t_obj				*light[MAX_LIGHT];
 	int					total_light;
+	int					help;
 }						t_env;
+
+/*
+**			main.c
+*/
+
+void					err_exit(char *str);
+
+/*
+**			clear.c
+*/
+
+void					clear_env(t_env **env);
+
+/*
+**			closest_t.c
+*/
+
+double          		find_closest_t(t_list *list,
+							t_ray *ray, t_obj **hit_obj);
+
+/*
+**			color.c
+*/
+
+t_color					lighting(t_list *lst, t_obj **obj, t_ray ray, double t);
+t_color					get_hit_color(t_list *list, t_obj *light, t_obj *obj,
+										t_hit t);
+
+/*
+**			copy.c
+*/
+
+void					copy_cam(t_cam *dst, t_cam src);
+int						copy_list(t_list **dst, t_list *src);
+void					copy_up(t_vector *dst, t_vector src);
+
+
+/*
+**			display_cam_info.c
+*/
+
+void					display_cam_info(t_env *e);
+
+/*
+**			display_obj_info.c
+*/
 
 void					display_info1(t_env *e);
 void					display_info2(t_env *e, t_obj *obj);
+int						clicked_obj_info(int x, int y, t_env *e);
+
+/*
+**			draw.c
+*/
+
 t_color					get_color(int color);
-t_color					get_hit_color(t_list *list, t_obj *light, t_obj *obj,
-										t_hit t);
-void					get_hit_point_info(t_hit *hit_point, t_obj *obj,
-											t_ray *ray);
-int						shadow_or_not(t_list *lst, t_obj *obj, t_env *e);
-t_obj					*closest_obj_intercepted(t_list *lst, t_ray *ray,
-												t_env *e);
+t_color					ft_color(t_obj *hit_obj);
+void					pixel_put(int x, int y, t_color col, t_mlx *mlx);
+
+/*
+**			file_to_cam.c
+*/
+
+int						check_param(char *str, int i, int max);
+int						parser_cam(t_cam *cam, char **tab);
+
+/*
+**			file_to_obj.c
+*/
+
+int						parser_obj(t_list **obj, char **tab, int i);
+
+/*
+**			ft_atof.c
+*/
+
+double					ft_atof(char *nb, int *i);
+
+/*
+**			get.c
+*/
+
+int						get_col(t_obj *obj, char **tab, int *i);
+int						get_pos(t_obj *obj, char **tab, int *i);
+int						get_size(t_obj *obj, char **tab, int *i);
+int						get_rot(t_obj *obj, char **tab, int *i);
+
+/*
+**			get_light.c
+*/
+
+void					light_position(t_env *e);
+
+/*
+**			get_scene.c
+*/
+
+int						get_scene(t_list **obj, t_cam *cam, char *file);
+
+/*
+**			hook.c
+*/
+
+int						close_hook_func(int key, t_env *e);
+int						expose_hook_func(t_env *e);
+int						mouse_hook_func(int button, int x, int y, t_env *e);
+int						key_hook_func(int key, t_env *e);
+
+/*
+**			inter.c
+*/
 
 double					sphere_inter(t_obj *obj, t_ray *ray);
 double					cylinder_inter(t_obj *obj, t_ray *ray);
 double					cone_inter(t_obj *obj, t_ray *ray);
 double					plane_inter(t_obj *obj, t_ray *ray);
 
-t_list					*check_obj(t_list *lst, char *name);
-void					draw_obj(t_env *e);
-void					pixel_put(int x, int y, t_color col, t_mlx *mlx);
-void					err_exit(char *str);
+/*
+**			inter_utils.c
+*/
 
-int						parser_obj(t_list **obj, char **tab, int i);
-int						parser_cam(t_cam *cam, char **tab);
+double					solver(t_solver *s);
+void					get_hit_point_info(t_hit *hit_point, t_obj *obj,
+											t_ray *ray);
+/*
+**			light_composantes.c
+*/
+
+int						get_light_info(t_obj *obj, char **tab, int *i);
+
+/*
+**			list.c
+*/
 
 void					lst_add_back(t_list **lst, t_list *news);
-void					initialize_tab(int *tab, int n);
 
-float					normevect(t_vector *v1);
-t_vector				crossvect(t_vector *v1, t_vector *v2);
-t_vector				scalevect(double k, t_vector *v1);
-t_vector				subvect(t_vector *v1, t_vector *v2);
-t_vector				addvect(t_vector *v1, t_vector *v2);
-void					normalize(t_vector *v);
-double					prodscal(t_vector *v1, t_vector *v2);
-t_vector				opposite(t_vector *v);
-
-void					current_ray(double x, double y, t_env *e, t_ray *ray);
-t_color					ft_color(t_obj *hit_obj);
-t_color					lighting(t_list *lst, t_obj **obj, t_ray ray, double t);
-double					solver(t_solver *s);
+/*
+**			mouse_hook.c
+*/
 
 int						search_inside(t_obj *obj);
 
-int						check_param(char *str, int i, int max);
-int						get_col(t_obj *obj, char **tab, int *i);
-int						get_pos(t_obj *obj, char **tab, int *i);
-int						get_size(t_obj *obj, char **tab, int *i);
-int						get_rot(t_obj *obj, char **tab, int *i);
-int						get_light_info(t_obj *obj, char **tab, int *i);
-int						get_obj(t_list **obj, char **tab, int *i);
+/*
+**			objet_hit.c
+*/
 
-int						get_scene(t_list **obj, t_cam *cam, char *file);
+void					draw_obj(t_env *e);
 
-int						parser(t_list **obj, t_cam *cam, char **tab);
+/*
+**			ray.c
+*/
 
-double					find_closest_t(t_list *list, t_ray *ray,
-										t_obj **hit_obj);
+void					current_ray(double x, double y, t_env *e, t_ray *ray);
 
-void					copy_cam(t_cam *dst, t_cam src);
-int						copy_list(t_list **dst, t_list *src);
-void					copy_up(t_vector *dst, t_vector src);
-void					convert_list_into_struct(t_env *e);
-t_env					*init_env(void);
+/*
+**			rotate_event.c
+*/
 
-int						expose_hook_func(t_env *e);
-int						mouse_hook_func(int button, int x, int y, t_env *e);
-int						key_hook_func(int key, t_env *e);
-int						close_hook_func(int key, t_env *e);
-int						close_win(t_env *e);
-void					clear_env(t_env **env);
+void					rotate_camera(int key, t_env *e);
+
+/*
+**			translate_event.c
+*/
 
 void					translate(int key, t_env *e);
+
+/*
+**			translate_light.c
+*/
+
 void					translate_light(int key, t_vector r, t_vector n,
 						t_env *e);
-void					rotate_camera(int key, t_env *e);
-int						clicked_obj_info(int x, int y, t_env *e);
-void					display_cam_info(t_env *e);
-void					create_light_array(t_env *e);
 
-void					light_position(t_env *e);
-double              	ft_atof(char *nb, int *i);
+/*
+**			vector.c
+*/
+
+t_vector				subvect(t_vector *v1, t_vector *v2);
+t_vector				addvect(t_vector *v1, t_vector *v2);
+t_vector				scalevect(double k, t_vector *v1);
+float					normevect(t_vector *v1);
+t_vector				crossvect(t_vector *v1, t_vector *v2);
+
+/*
+**			vector2.c
+*/
+
+void					normalize(t_vector *v);
+double					prodscal(t_vector *v1, t_vector *v2);
+t_vector				opposite(t_vector *v);
 
 #endif

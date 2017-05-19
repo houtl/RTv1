@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   file_to_obj.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibtraore <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/14 03:39:26 by ibtraore          #+#    #+#             */
-/*   Updated: 2017/05/17 17:53:07 by thou             ###   ########.fr       */
+/*   Created: 2017/05/19 18:21:09 by thou              #+#    #+#             */
+/*   Updated: 2017/05/19 18:21:14 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	get_obj1(t_obj **new, char ***tab, int *i)
 	return (1);
 }
 
-int			get_obj(t_list **obj, char **tab, int *i)
+static int			get_obj(t_list **obj, char **tab, int *i)
 {
 	t_obj	*new;
 	t_list	*lstnew;

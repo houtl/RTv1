@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inter_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibtraore <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/02 08:22:23 by ibtraore          #+#    #+#             */
-/*   Updated: 2017/05/17 17:54:48 by thou             ###   ########.fr       */
+/*   Created: 2017/05/19 18:22:35 by thou              #+#    #+#             */
+/*   Updated: 2017/05/19 18:22:37 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ double	solver(t_solver *s)
 		return (-1.0);
 }
 
-void	get_hit_point_info1(t_hit *hit_point, t_obj *obj, t_ray *ray)
+static void	get_hit_point_info1(t_hit *hit_point, t_obj *obj, t_ray *ray)
 {
 	double		m;
 	t_vector	dist;
@@ -47,7 +47,7 @@ void	get_hit_point_info1(t_hit *hit_point, t_obj *obj, t_ray *ray)
 	}
 }
 
-void	get_hit_point_info2(t_hit *hit_point, t_obj *obj, t_ray *ray)
+static void	get_hit_point_info2(t_hit *hit_point, t_obj *obj, t_ray *ray)
 {
 	double		m;
 	t_vector	dist;

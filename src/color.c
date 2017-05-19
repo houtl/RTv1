@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibtraore <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/02 22:46:36 by ibtraore          #+#    #+#             */
-/*   Updated: 2017/05/17 17:49:19 by thou             ###   ########.fr       */
+/*   Created: 2017/05/19 18:19:43 by thou              #+#    #+#             */
+/*   Updated: 2017/05/19 18:19:48 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-double	shadow(t_list *list, t_obj *light, t_hit hit)
+static double	shadow(t_list *list, t_obj *light, t_hit hit)
 {
 	double		t;
 	t_vector	l;
@@ -36,7 +36,7 @@ double	shadow(t_list *list, t_obj *light, t_hit hit)
 	return (-1);
 }
 
-double	get_spec(t_vector l, t_vector v, t_hit hit)
+static double	get_spec(t_vector l, t_vector v, t_hit hit)
 {
 	t_vector	halfway;
 	double		specular;

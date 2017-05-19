@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   translate_event.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibtraore <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/01 01:21:04 by ibtraore          #+#    #+#             */
-/*   Updated: 2017/05/17 17:57:09 by thou             ###   ########.fr       */
+/*   Created: 2017/05/19 18:24:05 by thou              #+#    #+#             */
+/*   Updated: 2017/05/19 18:24:07 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void		repere(t_env *e, t_vector *n, t_vector *r)
 	normalize(&e->up);
 }
 
-void			translate_cam_pos(int key, t_vector r, t_vector n, t_env *e)
+static void			translate_cam_pos(int key, t_vector r, t_vector n, t_env *e)
 {
 	t_vector	pos;
 
@@ -47,7 +47,7 @@ void			translate_cam_pos(int key, t_vector r, t_vector n, t_env *e)
 			n.z * 10.0, 1.0};
 }
 
-void			translate_cam_dir(int key, t_vector r, t_vector n, t_env *e)
+static void			translate_cam_dir(int key, t_vector r, t_vector n, t_env *e)
 {
 	t_vector	dir;
 
@@ -72,7 +72,7 @@ void			translate_cam_dir(int key, t_vector r, t_vector n, t_env *e)
 			n.z * 10.0, 1.0};
 }
 
-void			translate_obj_pos(int key, t_vector r, t_vector n, t_env *e)
+static void			translate_obj_pos(int key, t_vector r, t_vector n, t_env *e)
 {
 	t_obj		*obj;
 
@@ -113,7 +113,7 @@ void			translate(int key, t_env *e)
 		translate_cam_pos(key, r, n, e);
 		translate_cam_dir(key, r, n, e);
 	}
-	if (key == R)
+	if (key == KEY_R)
 	{
 		e->is_obj_selected = 0;
 		e->hit_obj = NULL;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_scene.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibtraore <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/06 08:04:26 by ibtraore          #+#    #+#             */
-/*   Updated: 2017/05/17 17:54:09 by thou             ###   ########.fr       */
+/*   Created: 2017/05/19 18:21:58 by thou              #+#    #+#             */
+/*   Updated: 2017/05/19 18:22:05 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static char	**list_to_tab(t_list *list, size_t size)
 	return (tab);
 }
 
-int			parser(t_list **obj, t_cam *cam, char **tab)
+static int			parser(t_list **obj, t_cam *cam, char **tab)
 {
 	int		i;
 

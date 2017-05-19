@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibtraore <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/15 10:14:37 by ibtraore          #+#    #+#             */
-/*   Updated: 2017/05/17 18:10:01 by thou             ###   ########.fr       */
+/*   Created: 2017/05/19 18:23:09 by thou              #+#    #+#             */
+/*   Updated: 2017/05/19 18:23:11 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,13 @@ void		err_exit(char *str)
 	exit(1);
 }
 
-t_env		*init_env(void)
+static t_env		*init_env(void)
 {
 	t_env		*e;
 
 	SAFEMALL((e = (t_env*)malloc(sizeof(t_env))));
 	SAFEMALL((e->mlx.mlx = mlx_init()));
-	SAFEMALL((e->mlx.win = mlx_new_window
-				(e->mlx.mlx, WIDTH, HEIGHT, "rtv1")));
+	SAFEMALL((e->mlx.win = mlx_new_window(e->mlx.mlx, WIDTH, HEIGHT, "rtv1")));
 	SAFEMALL((e->mlx.img = mlx_new_image(e->mlx.mlx, WIDTH, HEIGHT)));
 	e->mlx.data = mlx_get_data_addr(e->mlx.img, &(e->mlx.bpp),
 						&(e->mlx.size_line), &(e->mlx.endian));
@@ -36,7 +35,7 @@ t_env		*init_env(void)
 	return (e);
 }
 
-void		menu(void)
+static void		menu(void)
 {
 	ft_putstr("WELCOME TO RTV1\n");
 	ft_putstr("---------------\n\n");
@@ -59,7 +58,7 @@ int			main(int argc, char **argv)
 	t_env	*e;
 
 	if (argc != 2)
-		err_exit("Usage : ./rtv1 file");
+		err_exit("Usage : ./rtv1 scenes_file");
 	if (!(e = init_env()))
 		err_exit("Unable to allocate");
 	e->obj = NULL;
@@ -70,7 +69,7 @@ int			main(int argc, char **argv)
 	draw_obj(&(*e));
 	light_position(e);
 	mlx_mouse_hook(e->mlx.win, mouse_hook_func, &(e->mlx));
-	mlx_hook(e->mlx.win, 17, 18, close_win, &(e->mlx));
+//	mlx_hook(e->mlx.win, 17, 18, close_win, &(e->mlx));
 	mlx_expose_hook(e->mlx.win, expose_hook_func, &(e->mlx));
 	mlx_hook(e->mlx.win, 2, (1L << 0), key_hook_func, &(e->mlx));
 	mlx_loop(e->mlx.mlx);

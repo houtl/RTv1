@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   copy.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibtraore <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/14 02:09:31 by ibtraore          #+#    #+#             */
-/*   Updated: 2017/05/17 17:49:36 by thou             ###   ########.fr       */
+/*   Created: 2017/05/19 18:20:00 by thou              #+#    #+#             */
+/*   Updated: 2017/05/19 18:20:02 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	copy_cam(t_cam *dst, t_cam src)
 	dst->dir.w = src.dir.w;
 }
 
-void	copy_obj(t_obj *dst, t_obj src)
+static void	copy_obj(t_obj *dst, t_obj src)
 {
 	dst->name = ft_strdup(src.name);
 	dst->pos.x = src.pos.x;

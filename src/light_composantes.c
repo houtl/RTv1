@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   light_composantes.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibtraore <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/10 23:18:04 by ibtraore          #+#    #+#             */
-/*   Updated: 2017/05/17 17:55:04 by thou             ###   ########.fr       */
+/*   Created: 2017/05/19 18:22:47 by thou              #+#    #+#             */
+/*   Updated: 2017/05/19 18:22:49 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-int	get_ambient(t_obj *obj, char **tab, int *i)
+static int	get_ambient(t_obj *obj, char **tab, int *i)
 {
 	int	j;
 
@@ -32,7 +32,7 @@ int	get_ambient(t_obj *obj, char **tab, int *i)
 	return (1);
 }
 
-int	get_diffuse(t_obj *obj, char **tab, int *i)
+static int	get_diffuse(t_obj *obj, char **tab, int *i)
 {
 	int	j;
 
@@ -52,7 +52,7 @@ int	get_diffuse(t_obj *obj, char **tab, int *i)
 	return (1);
 }
 
-int	get_specular(t_obj *obj, char **tab, int *i)
+static int	get_specular(t_obj *obj, char **tab, int *i)
 {
 	int	j;
 

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   display_obj_info.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibtraore <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/30 23:38:42 by ibtraore          #+#    #+#             */
-/*   Updated: 2017/05/17 17:52:29 by thou             ###   ########.fr       */
+/*   Created: 2017/05/19 18:20:32 by thou              #+#    #+#             */
+/*   Updated: 2017/05/19 18:20:35 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-void		display_hit_obj_info(t_env *e)
+static void		display_hit_obj_info(t_env *e)
 {
 	char *x;
 	char *y;
@@ -35,32 +35,6 @@ void		display_hit_obj_info(t_env *e)
 	s2 = ft_strjoin(s1, z);
 	ft_strdel(&s1);
 	e->itoapos = ft_strjoin(s2, "]");
-	ft_strdel(&s2);
-}
-
-void		display_rot_info(t_env *e)
-{
-	char *x;
-	char *y;
-	char *z;
-	char *s1;
-	char *s2;
-
-	e->itoarot = NULL;
-	if (!(e->hit_obj))
-		return ;
-	x = ft_itoa(e->hit_obj->rot.x);
-	y = ft_itoa(e->hit_obj->rot.y);
-	z = ft_itoa(e->hit_obj->rot.z);
-	s1 = ft_strjoin(x, ",");
-	s2 = ft_strjoin(s1, y);
-	ft_strdel(&x);
-	ft_strdel(&s1);
-	s1 = ft_strjoin(s2, ",");
-	ft_strdel(&s2);
-	s2 = ft_strjoin(s1, z);
-	ft_strdel(&s1);
-	e->itoarot = ft_strjoin(s2, "]");
 	ft_strdel(&s2);
 }
 

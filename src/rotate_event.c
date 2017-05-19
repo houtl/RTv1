@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate_event.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibtraore <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/01 05:46:12 by ibtraore          #+#    #+#             */
-/*   Updated: 2017/05/17 17:56:57 by thou             ###   ########.fr       */
+/*   Created: 2017/05/19 18:23:53 by thou              #+#    #+#             */
+/*   Updated: 2017/05/19 18:23:55 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #define DIR e->cam->dir
 #define ROT e->hit_obj->rot
 
-void	rotate_cam_pos(int key, t_env *e)
+static void	rotate_cam_pos(int key, t_env *e)
 {
 	if (e->is_obj_selected == 1)
 		return ;
@@ -40,7 +40,7 @@ void	rotate_cam_pos(int key, t_env *e)
 			POS.y * sinf(-0.13) + POS.z * cosf(0.13), 1.0};
 }
 
-void	rotate_cam_dir(int key, t_env *e)
+static void	rotate_cam_dir(int key, t_env *e)
 {
 	if (e->is_obj_selected == 1)
 		return ;
@@ -64,7 +64,7 @@ void	rotate_cam_dir(int key, t_env *e)
 			DIR.y * sinf(-0.13) + DIR.z * cosf(0.13), 1.0};
 }
 
-void	rotate_selected_obj_rot(int key, t_env *e)
+static void	rotate_selected_obj_rot(int key, t_env *e)
 {
 	if (e->is_obj_selected == 1)
 	{

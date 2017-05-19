@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   objet_hit.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibtraore <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/02 20:28:35 by ibtraore          #+#    #+#             */
-/*   Updated: 2017/05/17 17:55:58 by thou             ###   ########.fr       */
+/*   Created: 2017/05/19 18:23:31 by thou              #+#    #+#             */
+/*   Updated: 2017/05/19 18:23:33 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #define ADD 1
 #define SUM 2
 
-void	sum_color(double sum[3], t_color *c, double p, int flag)
+static void	sum_color(double sum[3], t_color *c, double p, int flag)
 {
 	if (INIT == flag)
 	{
@@ -38,7 +38,7 @@ void	sum_color(double sum[3], t_color *c, double p, int flag)
 	}
 }
 
-void	check_t(t_env *env, double sum[3], t_ray ray, t_obj *hit_obj)
+static void	check_t(t_env *env, double sum[3], t_ray ray, t_obj *hit_obj)
 {
 	t_color	color;
 
@@ -51,7 +51,7 @@ void	check_t(t_env *env, double sum[3], t_ray ray, t_obj *hit_obj)
 	sum_color(sum, &color, env->p, ADD);
 }
 
-t_color	get_pixel_color(t_env *env, t_list *list, double x, double y)
+static t_color	get_pixel_color(t_env *env, t_list *list, double x, double y)
 {
 	double	sub[2];
 	t_ray	ray;
@@ -80,7 +80,7 @@ t_color	get_pixel_color(t_env *env, t_list *list, double x, double y)
 	return (color);
 }
 
-void	drawer(t_list *list, t_env *e)
+static void	drawer(t_list *list, t_env *e)
 {
 	double	x[2];
 	t_color	color;

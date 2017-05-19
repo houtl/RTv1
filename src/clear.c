@@ -3,23 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   clear.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibtraore <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/14 06:38:15 by ibtraore          #+#    #+#             */
-/*   Updated: 2017/05/17 17:48:50 by thou             ###   ########.fr       */
+/*   Created: 2017/05/19 18:19:11 by thou              #+#    #+#             */
+/*   Updated: 2017/05/19 18:19:24 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-int				close_win(t_env *e)
-{
-	(void)e->mlx.mlx;
-	exit(0);
-	return (0);
-}
-
-void			free_list(t_list **list)
+static void			free_list(t_list **list)
 {
 	t_list *tmp;
 
