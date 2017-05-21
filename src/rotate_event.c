@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:23:53 by thou              #+#    #+#             */
-/*   Updated: 2017/05/19 18:23:55 by thou             ###   ########.fr       */
+/*   Updated: 2017/05/21 14:17:48 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ static void	rotate_selected_obj_rot(int key, t_env *e)
 	}
 }
 
-void	rotate_camera(int key, t_env *e)
+void		rotate_camera(int key, t_env *e)
 {
 	rotate_cam_pos(key, e);
 	rotate_cam_dir(key, e);

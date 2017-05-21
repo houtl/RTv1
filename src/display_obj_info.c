@@ -6,13 +6,31 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:20:32 by thou              #+#    #+#             */
-/*   Updated: 2017/05/19 18:20:35 by thou             ###   ########.fr       */
+/*   Updated: 2017/05/21 14:13:16 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static void		display_hit_obj_info(t_env *e)
+void		ft_put_info(t_env *e)
+{
+	char	*line;
+	int		fd;
+	int		i;
+
+	i = 5;
+	line = "press H for more information";
+	mlx_string_put(e->mlx.mlx, e->mlx.win, 20, 5, YELLOW, line);
+	fd = open(".info", O_RDONLY);
+	while (e->help == 1 && (get_next_line(fd, &line)) > 0)
+	{
+		mlx_string_put(e->mlx.mlx, e->mlx.win, 20, (i += 20), RAZER, line);
+		free(line);
+	}
+	close(fd);
+}
+
+static void	display_hit_obj_info(t_env *e)
 {
 	char *x;
 	char *y;

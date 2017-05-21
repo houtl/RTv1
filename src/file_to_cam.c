@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:20:58 by thou              #+#    #+#             */
-/*   Updated: 2017/05/19 18:21:00 by thou             ###   ########.fr       */
+/*   Updated: 2017/05/21 18:20:24 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,54 +17,49 @@ int				check_param(char *str, int i, int max)
 	int	words;
 
 	words = 0;
-	if (str[i] != '\0' && 0 == ft_iswhitespace(str[i]))
-		words += 1;
-	i += 1;
 	while (str[i] != '\0' && str[i] != ')')
 	{
-		if (i - 1 >= 0 && 1 == ft_iswhitespace(str[i - 1]) &&
-			0 == ft_iswhitespace(str[i]))
-			words += 1;
-		i += 1;
+		while (ft_iswhitespace(str[i]) == 1)
+			i++;
+		if (ft_iswhitespace(str[i]) == 0 && str[i] != 0 && str[i] != ')')
+			words++;
+		while (ft_iswhitespace(str[i]) == 0 && str[i] != 0 && str[i] != ')')
+			i++;
 	}
-	if (words != max)
-		return (0);
-	return (1);
+	return (words == max ? 1 : 0);
 }
 
-static void		parser_cam1(t_cam **cam, char ***tab, int *i)
+static t_vector	input_vector(char *tab, int *i)
 {
-	(*cam)->pos.x = ft_atof((*tab)[2], &(*i));
-	(*cam)->pos.y = ft_atof((*tab)[2], &(*i));
-	(*cam)->pos.z = ft_atof((*tab)[2], &(*i));
-	(*cam)->pos.w = 1.0;
+	t_vector	vec;
+
+	vec.x = ft_atof(tab, &(*i));
+	vec.y = ft_atof(tab, &(*i));
+	vec.z = ft_atof(tab, &(*i));
+	vec.w = 1.0;
+	return (vec);
 }
 
 int				parser_cam(t_cam *cam, char **tab)
 {
 	int	i;
 
-	if (0 != ft_strcmp("camera", tab[0]) && 0 != ft_strcmp("{", tab[1]))
-		return (0);
-	if (0 != ft_strncmp("	pos(", tab[2], 5))
+	if (0 != ft_strcmp("camera", tab[0]) || 0 != ft_strcmp("{", tab[1]) ||
+			0 != ft_strncmp("	pos(", tab[2], 5))
 		return (0);
 	i = 5;
 	if (0 == check_param(tab[2], i, 3))
 		return (0);
-	parser_cam1(&cam, &tab, &i);
-	if (0 != ft_strcmp(")", &tab[2][i]))
-		return (0);
-	if (0 != ft_strncmp("	dir(", tab[3], 5))
+	cam->pos = input_vector(tab[2], &i);
+	if (0 != ft_strcmp(")", &tab[2][i]) ||
+			0 != ft_strncmp("	dir(", tab[3], 5))
 		return (0);
 	i = 5;
 	if (0 == check_param(tab[3], i, 3))
 		return (0);
-	cam->dir.x = ft_atof(tab[3], &i);
-	cam->dir.y = ft_atof(tab[3], &i);
-	cam->dir.z = ft_atof(tab[3], &i);
-	cam->dir.w = 1.0;
+	cam->dir = input_vector(tab[3], &i);
 	cam->lookat = cam->dir;
-	if (0 != ft_strcmp(")", &tab[3][i]) && 0 != ft_strcmp("}", tab[4]))
+	if (0 != ft_strcmp(")", &tab[3][i]) || 0 != ft_strcmp("}", tab[4]))
 		return (0);
 	return (1);
 }

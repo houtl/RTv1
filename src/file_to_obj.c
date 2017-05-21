@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:21:09 by thou              #+#    #+#             */
-/*   Updated: 2017/05/19 18:21:14 by thou             ###   ########.fr       */
+/*   Updated: 2017/05/21 14:13:42 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	get_obj1(t_obj **new, char ***tab, int *i)
 	return (1);
 }
 
-static int			get_obj(t_list **obj, char **tab, int *i)
+static int	get_obj(t_list **obj, char **tab, int *i)
 {
 	t_obj	*new;
 	t_list	*lstnew;

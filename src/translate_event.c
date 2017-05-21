@@ -6,13 +6,13 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:24:05 by thou              #+#    #+#             */
-/*   Updated: 2017/05/19 18:24:07 by thou             ###   ########.fr       */
+/*   Updated: 2017/05/21 14:18:32 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static void		repere(t_env *e, t_vector *n, t_vector *r)
+static void	repere(t_env *e, t_vector *n, t_vector *r)
 {
 	*n = subvect(&e->cam->pos, &e->cam->dir);
 	normalize(&(*n));
@@ -22,7 +22,7 @@ static void		repere(t_env *e, t_vector *n, t_vector *r)
 	normalize(&e->up);
 }
 
-static void			translate_cam_pos(int key, t_vector r, t_vector n, t_env *e)
+static void	translate_cam_pos(int key, t_vector r, t_vector n, t_env *e)
 {
 	t_vector	pos;
 
@@ -47,7 +47,7 @@ static void			translate_cam_pos(int key, t_vector r, t_vector n, t_env *e)
 			n.z * 10.0, 1.0};
 }
 
-static void			translate_cam_dir(int key, t_vector r, t_vector n, t_env *e)
+static void	translate_cam_dir(int key, t_vector r, t_vector n, t_env *e)
 {
 	t_vector	dir;
 
@@ -72,7 +72,7 @@ static void			translate_cam_dir(int key, t_vector r, t_vector n, t_env *e)
 			n.z * 10.0, 1.0};
 }
 
-static void			translate_obj_pos(int key, t_vector r, t_vector n, t_env *e)
+static void	translate_obj_pos(int key, t_vector r, t_vector n, t_env *e)
 {
 	t_obj		*obj;
 
@@ -100,7 +100,7 @@ static void			translate_obj_pos(int key, t_vector r, t_vector n, t_env *e)
 	}
 }
 
-void			translate(int key, t_env *e)
+void		translate(int key, t_env *e)
 {
 	t_vector	n;
 	t_vector	r;

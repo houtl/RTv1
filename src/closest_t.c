@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:19:31 by thou              #+#    #+#             */
-/*   Updated: 2017/05/19 18:19:35 by thou             ###   ########.fr       */
+/*   Updated: 2017/05/21 14:07:17 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #define ADD 1
 #define SUM 2
 
-static void		get_tmp(double *tmp, t_obj *obj, t_ray *ray)
+static void	get_tmp(double *tmp, t_obj *obj, t_ray *ray)
 {
 	if (0 == ft_strcmp("	sphere", obj->name))
 		*tmp = sphere_inter(obj, ray);
@@ -28,7 +28,7 @@ static void		get_tmp(double *tmp, t_obj *obj, t_ray *ray)
 		*tmp = plane_inter(obj, ray);
 }
 
-double			find_closest_t(t_list *list, t_ray *ray, t_obj **hit_obj)
+double		find_closest_t(t_list *list, t_ray *ray, t_obj **hit_obj)
 {
 	t_list		*node;
 	t_obj		*obj;

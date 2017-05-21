@@ -6,13 +6,13 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:20:00 by thou              #+#    #+#             */
-/*   Updated: 2017/05/19 18:20:02 by thou             ###   ########.fr       */
+/*   Updated: 2017/05/21 14:07:39 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-void	copy_cam(t_cam *dst, t_cam src)
+void		copy_cam(t_cam *dst, t_cam src)
 {
 	dst->pos.x = src.pos.x;
 	dst->pos.y = src.pos.y;
@@ -45,7 +45,7 @@ static void	copy_obj(t_obj *dst, t_obj src)
 	dst->current = src.current;
 }
 
-int		copy_list(t_list **dst, t_list *src)
+int			copy_list(t_list **dst, t_list *src)
 {
 	t_list	*new;
 	t_list	*tmp;
@@ -68,7 +68,7 @@ int		copy_list(t_list **dst, t_list *src)
 	return (0);
 }
 
-void	copy_up(t_vector *dst, t_vector src)
+void		copy_up(t_vector *dst, t_vector src)
 {
 	dst->x = src.x;
 	dst->y = src.y;

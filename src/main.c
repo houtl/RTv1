@@ -6,19 +6,19 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:23:09 by thou              #+#    #+#             */
-/*   Updated: 2017/05/19 18:23:11 by thou             ###   ########.fr       */
+/*   Updated: 2017/05/21 18:34:33 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-void		err_exit(char *str)
+int				err_exit(char *str)
 {
 	ft_putendl(str);
 	exit(1);
 }
 
-static t_env		*init_env(void)
+static t_env	*init_env(void)
 {
 	t_env		*e;
 
@@ -32,28 +32,12 @@ static t_env		*init_env(void)
 	e->hit_obj = NULL;
 	e->aa = 1.0;
 	e->up = (t_vector){0.0, 1.0, 0.0, 0.0};
+	e->obj = NULL;
+	e->is_obj_selected = 0;
 	return (e);
 }
 
-static void		menu(void)
-{
-	ft_putstr("WELCOME TO RTV1\n");
-	ft_putstr("---------------\n\n");
-	ft_putstr(">>>Translate objet<<<\n");
-	ft_putstr("   ^   \n");
-	ft_putstr("<     >\n");
-	ft_putstr("   V   \n");
-	ft_putstr(">>>Rotate objet<<<\n");
-	ft_putstr("1-2, 4-5, 7-8\n\n");
-	ft_putstr("Move first light : Q W E D S A\n");
-	ft_putstr("Move second light : U I O L J K\n");
-	ft_putstr("Anti aliasing : V C B \n");
-	ft_putstr("left click : select objet\n");
-	ft_putstr("R : stop selecting objet\n");
-	ft_putstr("ESC : Quit\n");
-}
-
-int			main(int argc, char **argv)
+int				main(int argc, char **argv)
 {
 	t_env	*e;
 
@@ -61,15 +45,12 @@ int			main(int argc, char **argv)
 		err_exit("Usage : ./rtv1 scenes_file");
 	if (!(e = init_env()))
 		err_exit("Unable to allocate");
-	e->obj = NULL;
 	if (0 == get_scene(&e->obj, e->cam, argv[1]))
 		err_exit("SCENE ERROR");
-	e->is_obj_selected = 0;
-	menu();
 	draw_obj(&(*e));
 	light_position(e);
+	mlx_hook(e->mlx.win, 17, 18, err_exit, "EXIT");
 	mlx_mouse_hook(e->mlx.win, mouse_hook_func, &(e->mlx));
-//	mlx_hook(e->mlx.win, 17, 18, close_win, &(e->mlx));
 	mlx_expose_hook(e->mlx.win, expose_hook_func, &(e->mlx));
 	mlx_hook(e->mlx.win, 2, (1L << 0), key_hook_func, &(e->mlx));
 	mlx_loop(e->mlx.mlx);

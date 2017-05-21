@@ -6,13 +6,13 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:22:35 by thou              #+#    #+#             */
-/*   Updated: 2017/05/19 18:22:37 by thou             ###   ########.fr       */
+/*   Updated: 2017/05/21 14:16:46 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-double	solver(t_solver *s)
+double		solver(t_solver *s)
 {
 	s->delta = s->b * s->b - 4.0 * s->a * s->c;
 	if (s->delta < 0.0001)
@@ -72,7 +72,7 @@ static void	get_hit_point_info2(t_hit *hit_point, t_obj *obj, t_ray *ray)
 	}
 }
 
-void	get_hit_point_info(t_hit *hit_point, t_obj *obj, t_ray *ray)
+void		get_hit_point_info(t_hit *hit_point, t_obj *obj, t_ray *ray)
 {
 	hit_point->ray_origin = ray;
 	hit_point->point.x = ray->pos.x + hit_point->t * ray->dir.x;

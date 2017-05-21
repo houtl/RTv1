@@ -6,13 +6,13 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:20:13 by thou              #+#    #+#             */
-/*   Updated: 2017/05/19 18:20:15 by thou             ###   ########.fr       */
+/*   Updated: 2017/05/21 14:08:19 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static void			display_cam_pos_info(t_env *e)
+static void	display_cam_pos_info(t_env *e)
 {
 	char	*x;
 	char	*y;
@@ -41,7 +41,7 @@ static void			display_cam_pos_info(t_env *e)
 	mlx_string_put(e->mlx.mlx, e->mlx.win, 45, 435, 0x00FEDC, e->itoacampos);
 }
 
-static void			display_cam_dir_info(t_env *e)
+static void	display_cam_dir_info(t_env *e)
 {
 	char	*x;
 	char	*y;
@@ -69,7 +69,7 @@ static void			display_cam_dir_info(t_env *e)
 	mlx_string_put(e->mlx.mlx, e->mlx.win, 75, 453, 0x00FEDC, e->itoacamdir);
 }
 
-void			display_cam_info(t_env *e)
+void		display_cam_info(t_env *e)
 {
 	display_cam_pos_info(e);
 	display_cam_dir_info(e);

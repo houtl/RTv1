@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:23:31 by thou              #+#    #+#             */
-/*   Updated: 2017/05/19 18:23:33 by thou             ###   ########.fr       */
+/*   Updated: 2017/05/21 14:17:28 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #define ADD 1
 #define SUM 2
 
-static void	sum_color(double sum[3], t_color *c, double p, int flag)
+static void		sum_color(double sum[3], t_color *c, double p, int flag)
 {
 	if (INIT == flag)
 	{
@@ -38,7 +38,7 @@ static void	sum_color(double sum[3], t_color *c, double p, int flag)
 	}
 }
 
-static void	check_t(t_env *env, double sum[3], t_ray ray, t_obj *hit_obj)
+static void		check_t(t_env *env, double sum[3], t_ray ray, t_obj *hit_obj)
 {
 	t_color	color;
 
@@ -51,7 +51,7 @@ static void	check_t(t_env *env, double sum[3], t_ray ray, t_obj *hit_obj)
 	sum_color(sum, &color, env->p, ADD);
 }
 
-static t_color	get_pixel_color(t_env *env, t_list *list, double x, double y)
+static t_color	get_pixel_color(t_env *env, t_list *list, int x, int y)
 {
 	double	sub[2];
 	t_ray	ray;
@@ -80,24 +80,25 @@ static t_color	get_pixel_color(t_env *env, t_list *list, double x, double y)
 	return (color);
 }
 
-static void	drawer(t_list *list, t_env *e)
+static void		drawer(t_list *list, t_env *e)
 {
-	double	x[2];
+	int		x;
+	int		y;
 	t_color	color;
 
-	x[0] = -1;
-	while (++x[0] < (double)HEIGHT)
+	x = -1;
+	while (++x < HEIGHT)
 	{
-		x[1] = -1;
-		while (++x[1] < (double)WIDTH)
+		y = -1;
+		while (++y < WIDTH)
 		{
-			color = get_pixel_color(e, list, x[1], x[0]);
-			pixel_put((int)x[1], (int)x[0], color, &e->mlx);
+			color = get_pixel_color(e, list, y, x);
+			pixel_put(y, x, color, &e->mlx);
 		}
 	}
 }
 
-void	draw_obj(t_env *e)
+void			draw_obj(t_env *e)
 {
 	drawer(e->obj, e);
 	mlx_clear_window(e->mlx.mlx, e->mlx.win);
@@ -108,4 +109,5 @@ void	draw_obj(t_env *e)
 		display_info1(e);
 		display_info2(e, e->hit_obj);
 	}
+	ft_put_info(e);
 }

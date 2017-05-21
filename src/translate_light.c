@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:24:19 by thou              #+#    #+#             */
-/*   Updated: 2017/05/19 18:24:21 by thou             ###   ########.fr       */
+/*   Updated: 2017/05/21 14:18:47 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static void	translate_light_2(int key, t_vector r, t_vector n, t_env *e)
 			light.pos.y - n.y * 10.0, light.pos.z - n.z * 10.0, 1.0};
 }
 
-void	translate_light(int key, t_vector r, t_vector n, t_env *e)
+void		translate_light(int key, t_vector r, t_vector n, t_env *e)
 {
 	translate_light_1(key, r, n, e);
 	translate_light_2(key, r, n, e);

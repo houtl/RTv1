@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:19:43 by thou              #+#    #+#             */
-/*   Updated: 2017/05/19 18:19:48 by thou             ###   ########.fr       */
+/*   Updated: 2017/05/21 14:12:28 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ static double	get_spec(t_vector l, t_vector v, t_hit hit)
 	return (specular);
 }
 
-t_color	set_color(t_obj *light, t_obj *obj, double specul, double cos_teta)
+static t_color	set_color(t_obj *light, t_obj *obj,
+		double specul, double cos_teta)
 {
 	t_color col;
 
@@ -65,7 +66,7 @@ t_color	set_color(t_obj *light, t_obj *obj, double specul, double cos_teta)
 	return (col);
 }
 
-t_color	get_hit_color(t_list *list, t_obj *light, t_obj *obj, t_hit hit)
+static t_color	get_hit_color(t_list *list, t_obj *light, t_obj *obj, t_hit hit)
 {
 	t_color		col;
 	t_vector	v;
@@ -90,7 +91,7 @@ t_color	get_hit_color(t_list *list, t_obj *light, t_obj *obj, t_hit hit)
 	return (col);
 }
 
-t_color	lighting(t_list *list, t_obj **obj, t_ray ray, double t)
+t_color			lighting(t_list *list, t_obj **obj, t_ray ray, double t)
 {
 	t_list	*tmp;
 	t_color	col;

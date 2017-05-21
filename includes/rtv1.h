@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 16:50:30 by thou              #+#    #+#             */
-/*   Updated: 2017/05/19 18:18:31 by thou             ###   ########.fr       */
+/*   Updated: 2017/05/21 18:32:41 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,19 @@
 # include <math.h>
 # include "mlx_key.h"
 
-# define SAFEMALL(x) if (!x) return (NULL);
+# define WHITE		0xFFFFFF
+# define BLUE		0x0901F7
+# define BLUE_C		0x015BF7
+# define SKY		0x01B5F7
+# define LAGON		0x33AB9B
+# define WGREEN		0x01F79D
+# define RAZER		0x01F74B
+# define LIMON		0xADF701
+# define YELLOW		0xEFF701
+# define ORANGE		0xF78C01
+# define RED		0xFE4D01
+
+# define SAFEMALL(x) if (!x || x < 0) return (NULL);
 # define MAX_LIGHT 10
 
 # define TRUE 1
@@ -148,7 +160,7 @@ typedef struct			s_env
 **			main.c
 */
 
-void					err_exit(char *str);
+int						err_exit(char *str);
 
 /*
 **			clear.c
@@ -160,7 +172,7 @@ void					clear_env(t_env **env);
 **			closest_t.c
 */
 
-double          		find_closest_t(t_list *list,
+double					find_closest_t(t_list *list,
 							t_ray *ray, t_obj **hit_obj);
 
 /*
@@ -168,8 +180,6 @@ double          		find_closest_t(t_list *list,
 */
 
 t_color					lighting(t_list *lst, t_obj **obj, t_ray ray, double t);
-t_color					get_hit_color(t_list *list, t_obj *light, t_obj *obj,
-										t_hit t);
 
 /*
 **			copy.c
@@ -178,7 +188,6 @@ t_color					get_hit_color(t_list *list, t_obj *light, t_obj *obj,
 void					copy_cam(t_cam *dst, t_cam src);
 int						copy_list(t_list **dst, t_list *src);
 void					copy_up(t_vector *dst, t_vector src);
-
 
 /*
 **			display_cam_info.c
@@ -190,6 +199,7 @@ void					display_cam_info(t_env *e);
 **			display_obj_info.c
 */
 
+void					ft_put_info(t_env *e);
 void					display_info1(t_env *e);
 void					display_info2(t_env *e, t_obj *obj);
 int						clicked_obj_info(int x, int y, t_env *e);
