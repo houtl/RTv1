@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 16:50:30 by thou              #+#    #+#             */
-/*   Updated: 2017/05/22 18:08:42 by thou             ###   ########.fr       */
+/*   Updated: 2017/05/22 18:20:52 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,12 +169,6 @@ typedef struct			s_env
 */
 
 int						err_exit(char *str);
-
-/*
-**			clear.c
-*/
-
-void					clear_env(t_env **env);
 
 /*
 **			closest_t.c

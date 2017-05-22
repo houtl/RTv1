@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:22:15 by thou              #+#    #+#             */
-/*   Updated: 2017/05/22 18:12:26 by thou             ###   ########.fr       */
+/*   Updated: 2017/05/22 18:17:55 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int				mouse_hook_func(int button, int x, int y, t_env *e)
 int				key_hook_func(int key, t_env *e)
 {
 	if (key == KEY_ESC)
-		clear_env(&e);
+		exit(0);
 	if (key == KEY_V)
 		e->aa *= 2;
 	if (key == KEY_C)
