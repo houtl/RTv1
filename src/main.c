@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:23:09 by thou              #+#    #+#             */
-/*   Updated: 2017/05/22 14:32:22 by thou             ###   ########.fr       */
+/*   Updated: 2017/05/22 18:12:23 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ int				main(int argc, char **argv)
 	light_position(e);
 	mlx_hook(e->mlx.win, 17, 18, err_exit, "EXIT");
 	mlx_mouse_hook(e->mlx.win, mouse_hook_func, &(e->mlx));
-	mlx_expose_hook(e->mlx.win, expose_hook_func, &(e->mlx));
 	mlx_hook(e->mlx.win, 2, (1L << 0), key_hook_func, &(e->mlx));
 	mlx_loop(e->mlx.mlx);
 	return (0);

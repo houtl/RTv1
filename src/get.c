@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:21:29 by thou              #+#    #+#             */
-/*   Updated: 2017/05/22 16:11:16 by thou             ###   ########.fr       */
+/*   Updated: 2017/05/22 16:32:18 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,17 +44,14 @@ int	get_size(t_obj *obj, const char **tab, int *i)
 {
 	int	j;
 
-	if (0 != ft_strncmp("\t\tsize(", tab[*i], 7))
+	if (ft_strncmp("\t\tsize(", tab[*i], 7))
 		return (0);
 	j = 7;
-	if (0 == check_param(tab[*i], j, 1))
-		return (0);
+	SAFEMALL0((check_param(tab[*i], j, 1)));
 	obj->size = ft_atof(tab[*i], &j);
-	if (')' != tab[*i][j])
+	if (')' != tab[*i][j] || '\0' != tab[*i][j + 1])
 		return (0);
-	if ('\0' != tab[*i][j + 1])
-		return (0);
-	*i += 1;
+	++(*i);
 	return (1);
 }
 

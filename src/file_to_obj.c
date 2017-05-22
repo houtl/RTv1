@@ -6,11 +6,40 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:21:09 by thou              #+#    #+#             */
-/*   Updated: 2017/05/22 16:09:04 by thou             ###   ########.fr       */
+/*   Updated: 2017/05/22 17:24:04 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
+
+static int	get_light_info(t_obj *obj, const char **tab, int *i)
+{
+	int	j;
+
+	if (ft_strncmp("\t\tambient(", tab[*i], 10) ||
+			ft_strncmp("\t\tdiffuse(", tab[*i + 1], 10) ||
+			ft_strncmp("\t\tspecular(", tab[*i + 2], 11))
+		return (0);
+	j = 10;
+	SAFEMALL0((check_param(tab[*i], j, 1)));
+	obj->ambient = ft_atof(tab[*i], &j);
+	if (obj->ambient < 0 || obj->ambient >= 1 ||
+			')' != tab[*i][j] || '\0' != tab[(*i)++][j + 1])
+		return (0);
+	j = 10;
+	SAFEMALL0((check_param(tab[*i], j, 1)));
+	obj->diffuse = ft_atof(tab[*i], &j);
+	if (obj->diffuse < 0 || obj->diffuse >= 1 ||
+			')' != tab[*i][j] || '\0' != tab[(*i)++][j + 1])
+		return (0);
+	j = 11;
+	SAFEMALL0((check_param(tab[*i], j, 1)));
+	obj->specular = ft_atof(tab[*i], &j);
+	if (obj->specular < 0 || obj->specular >= 1 ||
+			')' != tab[*i][j] || '\0' != tab[(*i)++][j + 1])
+		return (0);
+	return (1);
+}
 
 int			type_object(const char *str)
 {

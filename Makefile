@@ -6,7 +6,7 @@
 #    By: thou <marvin@42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/04 17:35:06 by thou              #+#    #+#              #
-#    Updated: 2017/05/22 13:38:14 by thou             ###   ########.fr        #
+#    Updated: 2017/05/22 17:24:59 by thou             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,8 +25,8 @@ NAME		=	rtv1
 FLAG		=	-Wall -Werror -Wextra
 FLAGMLX		=	-lmlx -framework OpenGL -framework Appkit
 SRC_DIR		=	src/
-SRC_BASE	=	ft_atof.c clear.c file_to_cam.c inter_utils.c rotate_event.c\
-				closest_t.c file_to_obj.c light_composantes.c translate_event.c\
+SRC_BASE	=	ft_atof.c clear.c inter_utils.c rotate_event.c\
+				closest_t.c file_to_obj.c translate_event.c\
 				color.c get.c translate_light.c copy.c get_light2.c main.c vector.c\
 				display_cam_info.c get_scene.c vector2.c display_obj_info.c\
 			   	hook.c objet_hit.c draw.c inter.c ray.c

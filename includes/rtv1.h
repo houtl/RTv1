@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 16:50:30 by thou              #+#    #+#             */
-/*   Updated: 2017/05/22 16:05:37 by thou             ###   ########.fr       */
+/*   Updated: 2017/05/22 18:08:42 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -221,14 +221,6 @@ t_color					ft_color(t_obj *hit_obj);
 void					pixel_put(int x, int y, t_color col, t_mlx *mlx);
 
 /*
-**			file_to_cam.c
-*/
-
-int						check_param(const char *str, int i, int max);
-t_vector				input_vector(const char *tab, int *i, double w);
-int						parser_cam(t_cam *cam, const char **tab);
-
-/*
 **			file_to_obj.c
 */
 
@@ -258,14 +250,14 @@ void					light_position(t_env *e);
 **			get_scene.c
 */
 
+int						check_param(const char *str, int i, int max);
+t_vector				input_vector(const char *tab, int *i, double w);
 int						get_scene(t_list **obj, t_cam *cam, char *file);
 
 /*
 **			hook.c
 */
 
-int						close_hook_func(int key, t_env *e);
-int						expose_hook_func(t_env *e);
 int						mouse_hook_func(int button, int x, int y, t_env *e);
 int						key_hook_func(int key, t_env *e);
 
@@ -285,12 +277,6 @@ double					plane_inter(t_obj *obj, t_ray *ray);
 double					solver(t_solver *s);
 void					get_hit_point_info(t_hit *hit_point, t_obj *obj,
 											t_ray *ray);
-/*
-**			light_composantes.c
-*/
-
-int						get_light_info(t_obj *obj, const char **tab, int *i);
-
 /*
 **			objet_hit.c
 */

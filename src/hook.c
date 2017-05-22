@@ -6,24 +6,11 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:22:15 by thou              #+#    #+#             */
-/*   Updated: 2017/05/19 18:22:17 by thou             ###   ########.fr       */
+/*   Updated: 2017/05/22 18:12:26 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
-
-int				close_hook_func(int key, t_env *e)
-{
-	(void)key;
-	clear_env(&e);
-	return (0);
-}
-
-int				expose_hook_func(t_env *e)
-{
-	mlx_put_image_to_window(e->mlx.mlx, e->mlx.win, e->mlx.img, 0, 0);
-	return (0);
-}
 
 int				mouse_hook_func(int button, int x, int y, t_env *e)
 {
