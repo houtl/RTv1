@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 16:50:30 by thou              #+#    #+#             */
-/*   Updated: 2017/05/21 18:32:41 by thou             ###   ########.fr       */
+/*   Updated: 2017/05/22 16:05:37 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,14 @@
 # define ORANGE		0xF78C01
 # define RED		0xFE4D01
 
+# define LIGHT		1
+# define PLANE		2
+# define CYLINDER	3
+# define CONE		4
+# define SPHERE		5
+
 # define SAFEMALL(x) if (!x || x < 0) return (NULL);
+# define SAFEMALL0(x) if (!x || x < 0) return (0);
 # define MAX_LIGHT 10
 
 # define TRUE 1
@@ -96,7 +103,7 @@ typedef struct			s_light
 
 typedef struct			s_obj
 {
-	char				*name;
+	int					name;
 	t_vector			pos;
 	t_color				color;
 	t_vector			rot;
@@ -149,6 +156,7 @@ typedef struct			s_env
 	char				*itoarot;
 	char				*itoacampos;
 	char				*itoacamdir;
+	char				**tab;
 	t_obj				*hit_obj;
 	int					is_obj_selected;
 	t_obj				*light[MAX_LIGHT];
@@ -216,29 +224,29 @@ void					pixel_put(int x, int y, t_color col, t_mlx *mlx);
 **			file_to_cam.c
 */
 
-int						check_param(char *str, int i, int max);
-int						parser_cam(t_cam *cam, char **tab);
+int						check_param(const char *str, int i, int max);
+t_vector				input_vector(const char *tab, int *i, double w);
+int						parser_cam(t_cam *cam, const char **tab);
 
 /*
 **			file_to_obj.c
 */
 
-int						parser_obj(t_list **obj, char **tab, int i);
+int						parser_obj(t_list **obj, const char **tab, int i);
 
 /*
 **			ft_atof.c
 */
 
-double					ft_atof(char *nb, int *i);
+double					ft_atof(const char *nb, int *i);
 
 /*
 **			get.c
 */
 
-int						get_col(t_obj *obj, char **tab, int *i);
-int						get_pos(t_obj *obj, char **tab, int *i);
-int						get_size(t_obj *obj, char **tab, int *i);
-int						get_rot(t_obj *obj, char **tab, int *i);
+int						get_colpos(t_obj *obj, const char **tab, int *i);
+int						get_size(t_obj *obj, const char **tab, int *i);
+int						get_rot(t_obj *obj, const char **tab, int *i);
 
 /*
 **			get_light.c
@@ -281,19 +289,7 @@ void					get_hit_point_info(t_hit *hit_point, t_obj *obj,
 **			light_composantes.c
 */
 
-int						get_light_info(t_obj *obj, char **tab, int *i);
-
-/*
-**			list.c
-*/
-
-void					lst_add_back(t_list **lst, t_list *news);
-
-/*
-**			mouse_hook.c
-*/
-
-int						search_inside(t_obj *obj);
+int						get_light_info(t_obj *obj, const char **tab, int *i);
 
 /*
 **			objet_hit.c

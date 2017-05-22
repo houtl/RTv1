@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:20:00 by thou              #+#    #+#             */
-/*   Updated: 2017/05/21 14:07:39 by thou             ###   ########.fr       */
+/*   Updated: 2017/05/22 13:30:45 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void		copy_cam(t_cam *dst, t_cam src)
 
 static void	copy_obj(t_obj *dst, t_obj src)
 {
-	dst->name = ft_strdup(src.name);
+	dst->name = src.name;
 	dst->pos.x = src.pos.x;
 	dst->pos.y = src.pos.y;
 	dst->pos.z = src.pos.z;
@@ -62,7 +62,7 @@ int			copy_list(t_list **dst, t_list *src)
 		copy_obj(tmp_obj, *obj);
 		if (NULL == (new = (ft_lstnew((void *)tmp_obj, sizeof(t_obj)))))
 			return (-1);
-		lst_add_back(dst, new);
+		ft_lstadd(dst, new);
 		tmp = tmp->next;
 	}
 	return (0);

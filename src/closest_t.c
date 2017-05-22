@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:19:31 by thou              #+#    #+#             */
-/*   Updated: 2017/05/21 14:07:17 by thou             ###   ########.fr       */
+/*   Updated: 2017/05/22 13:21:51 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@
 
 static void	get_tmp(double *tmp, t_obj *obj, t_ray *ray)
 {
-	if (0 == ft_strcmp("	sphere", obj->name))
+	if (obj->name == SPHERE)
 		*tmp = sphere_inter(obj, ray);
-	else if (0 == ft_strcmp("	cylinder", obj->name))
+	else if (obj->name == CYLINDER)
 		*tmp = cylinder_inter(obj, ray);
-	else if (0 == ft_strcmp("	cone", obj->name))
+	else if (obj->name == CONE)
 		*tmp = cone_inter(obj, ray);
-	else if (0 == ft_strcmp("	plane", obj->name))
+	else if (obj->name == PLANE)
 		*tmp = plane_inter(obj, ray);
 }
 
@@ -41,7 +41,7 @@ double		find_closest_t(t_list *list, t_ray *ray, t_obj **hit_obj)
 	while (node)
 	{
 		obj = (t_obj *)node->content;
-		if (0 != ft_strcmp("	light", obj->name) && 0 == obj->current)
+		if (obj->name != LIGHT && 0 == obj->current)
 			get_tmp(&tmp, obj, ray);
 		if (0.0001 < tmp && tmp < t)
 		{

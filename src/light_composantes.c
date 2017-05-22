@@ -6,13 +6,13 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:22:47 by thou              #+#    #+#             */
-/*   Updated: 2017/05/21 14:15:54 by thou             ###   ########.fr       */
+/*   Updated: 2017/05/22 11:18:57 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static int	get_ambient(t_obj *obj, char **tab, int *i)
+static int	get_ambient(t_obj *obj, const char **tab, int *i)
 {
 	int	j;
 
@@ -32,7 +32,7 @@ static int	get_ambient(t_obj *obj, char **tab, int *i)
 	return (1);
 }
 
-static int	get_diffuse(t_obj *obj, char **tab, int *i)
+static int	get_diffuse(t_obj *obj, const char **tab, int *i)
 {
 	int	j;
 
@@ -52,7 +52,7 @@ static int	get_diffuse(t_obj *obj, char **tab, int *i)
 	return (1);
 }
 
-static int	get_specular(t_obj *obj, char **tab, int *i)
+static int	get_specular(t_obj *obj, const char **tab, int *i)
 {
 	int	j;
 
@@ -72,7 +72,7 @@ static int	get_specular(t_obj *obj, char **tab, int *i)
 	return (1);
 }
 
-int			get_light_info(t_obj *obj, char **tab, int *i)
+int			get_light_info(t_obj *obj, const char **tab, int *i)
 {
 	if (0 == get_ambient(obj, tab, i))
 		return (0);

@@ -6,13 +6,13 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/17 18:13:39 by thou              #+#    #+#             */
-/*   Updated: 2017/05/17 18:15:01 by thou             ###   ########.fr       */
+/*   Updated: 2017/05/22 10:46:05 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int			nb_size(char *nb)
+static int		nb_size(const char *nb)
 {
 	int				i;
 
@@ -22,7 +22,7 @@ static int			nb_size(char *nb)
 	return (i);
 }
 
-static double		get_integer_part(char *nb, int *i)
+static double	get_integer_part(const char *nb, int *i)
 {
 	int				exp;
 	int				size;
@@ -47,7 +47,7 @@ static double		get_integer_part(char *nb, int *i)
 	return (result);
 }
 
-static double		get_float_part(int neg, double result, char *nb, int *i)
+static double	get_float_part(int neg, double result, const char *nb, int *i)
 {
 	int				exp;
 
@@ -63,7 +63,7 @@ static double		get_float_part(int neg, double result, char *nb, int *i)
 	return (result);
 }
 
-double				ft_atof(char *nb, int *i)
+double			ft_atof(const char *nb, int *i)
 {
 	int				neg;
 	double			result;

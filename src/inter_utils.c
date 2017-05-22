@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:22:35 by thou              #+#    #+#             */
-/*   Updated: 2017/05/21 14:16:46 by thou             ###   ########.fr       */
+/*   Updated: 2017/05/22 13:18:08 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ static void	get_hit_point_info1(t_hit *hit_point, t_obj *obj, t_ray *ray)
 	t_vector	left;
 	t_vector	right;
 
-	if (ft_strcmp(obj->name, "	sphere") == 0)
+	if (obj->name == SPHERE)
 		hit_point->normal = subvect(&obj->pos, &hit_point->point);
-	if (ft_strcmp(obj->name, "	cylinder") == 0)
+	if (obj->name == CYLINDER)
 	{
 		dist = subvect(&obj->pos, &ray->pos);
 		m = hit_point->t * prodscal(&ray->dir, &obj->rot) +
@@ -54,7 +54,7 @@ static void	get_hit_point_info2(t_hit *hit_point, t_obj *obj, t_ray *ray)
 	t_vector	left;
 	t_vector	right;
 
-	if (ft_strcmp(obj->name, "	cone") == 0)
+	if (obj->name == CONE)
 	{
 		dist = subvect(&obj->pos, &ray->pos);
 		m = hit_point->t * prodscal(&ray->dir, &obj->rot) +
@@ -63,7 +63,7 @@ static void	get_hit_point_info2(t_hit *hit_point, t_obj *obj, t_ray *ray)
 		right = scalevect((1 + pow(tan(obj->size), 2)) * m, &obj->rot);
 		hit_point->normal = subvect(&right, &left);
 	}
-	if (ft_strcmp(obj->name, "	plane") == 0)
+	if (obj->name == PLANE)
 	{
 		if (prodscal(&ray->dir, &obj->rot) > 0.0)
 			hit_point->normal = scalevect(-1.0, &obj->rot);

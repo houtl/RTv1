@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:19:43 by thou              #+#    #+#             */
-/*   Updated: 2017/05/21 14:12:28 by thou             ###   ########.fr       */
+/*   Updated: 2017/05/22 13:29:37 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ t_color			lighting(t_list *list, t_obj **obj, t_ray ray, double t)
 	get_hit_point_info(&hit, *obj, &ray);
 	while (tmp)
 	{
-		if (ft_strcmp(((t_obj*)tmp->content)->name, "	light") == 0)
+		if (((t_obj*)tmp->content)->name == LIGHT)
 		{
 			tmp_col = get_hit_color(list, (t_obj*)tmp->content, *obj, hit);
 			col.r = (col.r + tmp_col.r) > 255 ? 255 : col.r + tmp_col.r;

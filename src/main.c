@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:23:09 by thou              #+#    #+#             */
-/*   Updated: 2017/05/21 18:34:33 by thou             ###   ########.fr       */
+/*   Updated: 2017/05/22 14:32:22 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,20 @@ int				err_exit(char *str)
 {
 	ft_putendl(str);
 	exit(1);
+}
+
+char			**init_tab(void)
+{
+	char	**tab;
+
+	SAFEMALL((tab = (char**)malloc(sizeof(char*) * 6)));
+	tab[0] = ft_strdup("light");
+	tab[1] = ft_strdup("plane");
+	tab[2] = ft_strdup("cylinder");
+	tab[3] = ft_strdup("cone");
+	tab[4] = ft_strdup("sphere");
+	tab[5] = NULL;
+	return (tab);
 }
 
 static t_env	*init_env(void)
@@ -29,6 +43,7 @@ static t_env	*init_env(void)
 	e->mlx.data = mlx_get_data_addr(e->mlx.img, &(e->mlx.bpp),
 						&(e->mlx.size_line), &(e->mlx.endian));
 	SAFEMALL((e->cam = (t_cam*)malloc(sizeof(t_cam))));
+	SAFEMALL((e->tab = init_tab()));
 	e->hit_obj = NULL;
 	e->aa = 1.0;
 	e->up = (t_vector){0.0, 1.0, 0.0, 0.0};

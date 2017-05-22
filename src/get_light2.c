@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:21:44 by thou              #+#    #+#             */
-/*   Updated: 2017/05/19 18:21:46 by thou             ###   ########.fr       */
+/*   Updated: 2017/05/22 13:34:47 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,7 @@ void		light_position(t_env *e)
 	{
 		obj = (t_obj*)tmp->content;
 		i = -1;
-		while (obj && obj->name[++i] && (obj->name[i] == '\t'))
-			;
-		if (obj && ft_strcmp(&obj->name[i], "light") == 0)
+		if (obj && obj->name == LIGHT)
 		{
 			e->light[e->total_light] = obj;
 			e->total_light++;

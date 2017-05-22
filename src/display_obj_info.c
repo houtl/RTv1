@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:20:32 by thou              #+#    #+#             */
-/*   Updated: 2017/05/21 14:13:16 by thou             ###   ########.fr       */
+/*   Updated: 2017/05/22 14:28:59 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void		display_info1(t_env *e)
 		e->itoapos = NULL;
 		display_hit_obj_info(e);
 		mlx_string_put(e->mlx.mlx, e->mlx.win, 340, 415, 0x00FEDC,
-				e->hit_obj->name);
+				e->tab[e->hit_obj->name - 1]);
 		mlx_string_put(e->mlx.mlx, e->mlx.win, 340, 425, 0x00FEDC,
 				"--------------");
 		mlx_string_put(e->mlx.mlx, e->mlx.win, 340, 435, 0x00FEDC,
@@ -76,16 +76,12 @@ void		display_info1(t_env *e)
 void		display_info2(t_env *e, t_obj *obj)
 {
 	int			i;
-	char		*name;
 
 	i = -1;
 	if (e->hit_obj)
 	{
-		while (e->hit_obj->name[++i] && '\t' == e->hit_obj->name[i])
-			;
-		name = &obj->name[i];
-		if (0 == ft_strcmp(name, "sphere") || 0 == ft_strcmp(name, "cylinder")
-				|| 0 == ft_strcmp(name, "cone"))
+		if (e->hit_obj->name == SPHERE || e->hit_obj->name == CYLINDER
+				|| e->hit_obj->name == CONE)
 		{
 			e->itoasize = 0;
 			mlx_string_put(e->mlx.mlx, e->mlx.win, 340, 455, 0x00FEDC,

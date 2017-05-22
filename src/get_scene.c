@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:21:58 by thou              #+#    #+#             */
-/*   Updated: 2017/05/21 16:33:50 by thou             ###   ########.fr       */
+/*   Updated: 2017/05/22 11:25:02 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ int			get_scene(t_list **obj, t_cam *cam, char *file)
 
 	if (!(tab = file_to_tab(file)))
 		return (0);
-	if (0 == parser_cam(cam, tab))
+	if (0 == parser_cam(cam, (const char**)tab))
 		return (0);
-	if (0 == parser_obj(obj, tab, 5))
+	if (0 == parser_obj(obj, (const char**)tab, 5))
 		return (0);
 	i = 0;
 	while (tab[i] != NULL)
