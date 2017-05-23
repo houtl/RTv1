@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 16:50:30 by thou              #+#    #+#             */
-/*   Updated: 2017/05/22 18:20:52 by thou             ###   ########.fr       */
+/*   Updated: 2017/05/23 17:42:41 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,13 @@
 
 # define SAFEMALL(x) if (!x || x < 0) return (NULL);
 # define SAFEMALL0(x) if (!x || x < 0) return (0);
-# define MAX_LIGHT 10
+# define MAX_LIGHT	10
 
-# define TRUE 1
-# define FALSE 0
-# define FOC 2.0
-# define WIDTH 500
-# define HEIGHT 500
+# define TRUE		1
+# define FALSE		0
+# define FOC		2.0
+# define WIDTH		500
+# define HEIGHT		500
 
 typedef struct			s_vector
 {
