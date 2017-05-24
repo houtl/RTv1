@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:24:05 by thou              #+#    #+#             */
-/*   Updated: 2017/05/21 14:18:32 by thou             ###   ########.fr       */
+/*   Updated: 2017/05/24 18:07:34 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	repere(t_env *e, t_vector *n, t_vector *r)
 {
-	*n = subvect(&e->cam->pos, &e->cam->dir);
+	*n = subvect(&e->cam.pos, &e->cam.dir);
 	normalize(&(*n));
 	*r = crossvect(n, &(t_vector){0.0, 1.0, 0.0, 0.0});
 	normalize(&(*r));
@@ -26,24 +26,24 @@ static void	translate_cam_pos(int key, t_vector r, t_vector n, t_env *e)
 {
 	t_vector	pos;
 
-	pos = e->cam->pos;
+	pos = e->cam.pos;
 	if (key == KEY_RIGHT)
-		e->cam->pos = (t_vector){pos.x + r.x * 10.0, pos.y + r.y * 10.0,
+		e->cam.pos = (t_vector){pos.x + r.x * 10.0, pos.y + r.y * 10.0,
 			pos.z + r.z * 10.0, 1.0};
 	else if (key == KEY_LEFT)
-		e->cam->pos = (t_vector){pos.x - r.x * 10.0, pos.y - r.y * 10.0,
+		e->cam.pos = (t_vector){pos.x - r.x * 10.0, pos.y - r.y * 10.0,
 			pos.z - r.z * 10.0, 1.0};
 	else if (key == KEY_UP)
-		e->cam->pos = (t_vector){pos.x + e->up.x * 10.0, pos.y + e->up.y * 10.0,
+		e->cam.pos = (t_vector){pos.x + e->up.x * 10.0, pos.y + e->up.y * 10.0,
 			pos.z + e->up.z * 10.0, 1.0};
 	else if (key == KEY_DOWN)
-		e->cam->pos = (t_vector){pos.x - e->up.x * 10.0, pos.y - e->up.y * 10.0,
+		e->cam.pos = (t_vector){pos.x - e->up.x * 10.0, pos.y - e->up.y * 10.0,
 			pos.z - e->up.z * 10.0, 1.0};
 	else if (key == KEY_PAD_ADD)
-		e->cam->pos = (t_vector){pos.x + n.x * 10.0, pos.y + n.y * 10.0, pos.z +
+		e->cam.pos = (t_vector){pos.x + n.x * 10.0, pos.y + n.y * 10.0, pos.z +
 			n.z * 10.0, 1.0};
 	else if (key == KEY_PAD_SUB)
-		e->cam->pos = (t_vector){pos.x - n.x * 10.0, pos.y - n.y * 10.0, pos.z -
+		e->cam.pos = (t_vector){pos.x - n.x * 10.0, pos.y - n.y * 10.0, pos.z -
 			n.z * 10.0, 1.0};
 }
 
@@ -51,24 +51,24 @@ static void	translate_cam_dir(int key, t_vector r, t_vector n, t_env *e)
 {
 	t_vector	dir;
 
-	dir = e->cam->dir;
+	dir = e->cam.dir;
 	if (key == KEY_RIGHT)
-		e->cam->dir = (t_vector){dir.x + r.x * 10.0, dir.y + r.y * 10.0,
+		e->cam.dir = (t_vector){dir.x + r.x * 10.0, dir.y + r.y * 10.0,
 			dir.z + r.z * 10.0, 1.0};
 	else if (key == KEY_LEFT)
-		e->cam->dir = (t_vector){dir.x - r.x * 10.0, dir.y - r.y * 10.0,
+		e->cam.dir = (t_vector){dir.x - r.x * 10.0, dir.y - r.y * 10.0,
 			dir.z - r.z * 10.0, 1.0};
 	else if (key == KEY_UP)
-		e->cam->dir = (t_vector){dir.x + e->up.x * 10.0, dir.y + e->up.y * 10.0,
+		e->cam.dir = (t_vector){dir.x + e->up.x * 10.0, dir.y + e->up.y * 10.0,
 			dir.z + e->up.z * 10.0, 1.0};
 	else if (key == KEY_DOWN)
-		e->cam->dir = (t_vector){dir.x - e->up.x * 10.0, dir.y - e->up.y * 10.0,
+		e->cam.dir = (t_vector){dir.x - e->up.x * 10.0, dir.y - e->up.y * 10.0,
 			dir.z - e->up.z * 10.0, 1.0};
 	else if (key == KEY_PAD_ADD)
-		e->cam->dir = (t_vector){dir.x + n.x * 10.0, dir.y + n.y * 10.0, dir.z +
+		e->cam.dir = (t_vector){dir.x + n.x * 10.0, dir.y + n.y * 10.0, dir.z +
 			n.z * 10.0, 1.0};
 	else if (key == KEY_PAD_SUB)
-		e->cam->dir = (t_vector){dir.x - n.x * 10.0, dir.y - n.y * 10.0, dir.z -
+		e->cam.dir = (t_vector){dir.x - n.x * 10.0, dir.y - n.y * 10.0, dir.z -
 			n.z * 10.0, 1.0};
 }
 

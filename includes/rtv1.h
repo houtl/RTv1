@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 16:50:30 by thou              #+#    #+#             */
-/*   Updated: 2017/05/23 17:42:41 by thou             ###   ########.fr       */
+/*   Updated: 2017/05/24 18:28:41 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@
 # define CONE		4
 # define SPHERE		5
 
-# define SAFEMALL(x) if (!x || x < 0) return (NULL);
-# define SAFEMALL0(x) if (!x || x < 0) return (0);
+# define SAFEMALL(x) if (!x) return (NULL);
+# define SAFEMALL0(x) if (!x) return (0);
 # define MAX_LIGHT	10
 
 # define TRUE		1
@@ -145,7 +145,7 @@ typedef struct			s_mlx
 typedef struct			s_env
 {
 	t_mlx				mlx;
-	t_cam				*cam;
+	t_cam				cam;
 	t_list				*obj;
 	t_vector			up;
 	double				aa;
@@ -246,7 +246,7 @@ void					light_position(t_env *e);
 
 int						check_param(const char *str, int i, int max);
 t_vector				input_vector(const char *tab, int *i, double w);
-int						get_scene(t_list **obj, t_cam *cam, char *file);
+int						get_scene(t_env *e, char *file);
 
 /*
 **			hook.c

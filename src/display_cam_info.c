@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:20:13 by thou              #+#    #+#             */
-/*   Updated: 2017/05/21 14:08:19 by thou             ###   ########.fr       */
+/*   Updated: 2017/05/24 18:09:55 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,9 @@ static void	display_cam_pos_info(t_env *e)
 	char	*s1;
 	char	*s2;
 
-	if (!e->cam)
-		return ;
-	x = ft_itoa(e->cam->pos.x);
-	y = ft_itoa(e->cam->pos.y);
-	z = ft_itoa(e->cam->pos.z);
+	x = ft_itoa(e->cam.pos.x);
+	y = ft_itoa(e->cam.pos.y);
+	z = ft_itoa(e->cam.pos.z);
 	s1 = ft_strjoin(x, ",");
 	s2 = ft_strjoin(s1, y);
 	ft_strdel(&x);
@@ -50,11 +48,9 @@ static void	display_cam_dir_info(t_env *e)
 	char	*s2;
 
 	e->itoacamdir = NULL;
-	if (!e->cam)
-		return ;
-	x = ft_itoa(e->cam->lookat.x);
-	y = ft_itoa(e->cam->lookat.y);
-	z = ft_itoa(e->cam->lookat.z);
+	x = ft_itoa(e->cam.lookat.x);
+	y = ft_itoa(e->cam.lookat.y);
+	z = ft_itoa(e->cam.lookat.z);
 	s1 = ft_strjoin(x, ",");
 	s2 = ft_strjoin(s1, y);
 	ft_strdel(&x);

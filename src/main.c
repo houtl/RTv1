@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:23:09 by thou              #+#    #+#             */
-/*   Updated: 2017/05/23 17:27:17 by thou             ###   ########.fr       */
+/*   Updated: 2017/05/24 18:31:35 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int				err_exit(char *str)
 	exit(1);
 }
 
-char			**init_tab(void)
+static char		**init_tab(void)
 {
 	char	**tab;
 
@@ -32,17 +32,13 @@ char			**init_tab(void)
 	return (tab);
 }
 
-static t_env	*init_env(void)
+static void		*init_env(t_env *e)
 {
-	t_env		*e;
-
-	SAFEMALL((e = (t_env*)malloc(sizeof(t_env))));
 	SAFEMALL((e->mlx.mlx = mlx_init()));
 	SAFEMALL((e->mlx.win = mlx_new_window(e->mlx.mlx, WIDTH, HEIGHT, "rtv1")));
 	SAFEMALL((e->mlx.img = mlx_new_image(e->mlx.mlx, WIDTH, HEIGHT)));
 	e->mlx.data = mlx_get_data_addr(e->mlx.img, &(e->mlx.bpp),
 						&(e->mlx.size_line), &(e->mlx.endian));
-	SAFEMALL((e->cam = (t_cam*)malloc(sizeof(t_cam))));
 	SAFEMALL((e->tab = init_tab()));
 	e->hit_obj = NULL;
 	e->aa = 1.0;
@@ -50,24 +46,23 @@ static t_env	*init_env(void)
 	e->obj = NULL;
 	e->is_obj_selected = 0;
 	e->help = -1;
-	return (e);
+	return (0);
 }
 
 int				main(int argc, char **argv)
 {
-	t_env	*e;
+	t_env	e;
 
 	if (argc != 2)
 		err_exit("Usage : ./rtv1 scenes_file");
-	if (!(e = init_env()))
-		err_exit("Unable to allocate");
-	if (0 == get_scene(&e->obj, e->cam, argv[1]))
+	init_env(&e);
+	if (0 == get_scene(&e, argv[1]))
 		err_exit("SCENE ERROR");
-	draw_obj(&(*e));
-	light_position(e);
-	mlx_hook(e->mlx.win, 17, 18, err_exit, "EXIT");
-	mlx_mouse_hook(e->mlx.win, mouse_hook_func, &(e->mlx));
-	mlx_hook(e->mlx.win, 2, (1L << 0), key_hook_func, &(e->mlx));
-	mlx_loop(e->mlx.mlx);
+	draw_obj(&e);
+	light_position(&e);
+	mlx_hook(e.mlx.win, 17, 18, err_exit, "EXIT");
+	mlx_mouse_hook(e.mlx.win, mouse_hook_func, &(e.mlx));
+	mlx_hook(e.mlx.win, 2, (1L << 0), key_hook_func, &(e.mlx));
+	mlx_loop(e.mlx.mlx);
 	return (0);
 }

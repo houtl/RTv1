@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:21:58 by thou              #+#    #+#             */
-/*   Updated: 2017/05/22 16:26:29 by thou             ###   ########.fr       */
+/*   Updated: 2017/05/24 18:12:24 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ t_vector	input_vector(const char *tab, int *i, double w)
 	return (vec);
 }
 
-static int	parser_cam(t_cam *cam, const char **tab)
+static int	parser_cam(t_env *e, const char **tab)
 {
 	int	i;
 
@@ -48,13 +48,13 @@ static int	parser_cam(t_cam *cam, const char **tab)
 			ft_strncmp("\tpos(", tab[2], 5) || !(check_param(tab[2], 5, 3)))
 		return (0);
 	i = 5;
-	cam->pos = input_vector(tab[2], &i, 1.0);
+	e->cam.pos = input_vector(tab[2], &i, 1.0);
 	if (ft_strcmp(")", &tab[2][i]) || ft_strncmp("\tdir(", tab[3], 5) ||
 			!(check_param(tab[2], 5, 3)))
 		return (0);
 	i = 5;
-	cam->dir = input_vector(tab[3], &i, 1.0);
-	cam->lookat = cam->dir;
+	e->cam.dir = input_vector(tab[3], &i, 1.0);
+	e->cam.lookat = e->cam.dir;
 	if (0 != ft_strcmp(")", &tab[3][i]) || 0 != ft_strcmp("}", tab[4]))
 		return (0);
 	return (1);
@@ -85,16 +85,16 @@ static char	**file_to_tab(char *file)
 	return (tab);
 }
 
-int			get_scene(t_list **obj, t_cam *cam, char *file)
+int			get_scene(t_env *e, char *file)
 {
 	char	**tab;
 	int		i;
 
 	if (!(tab = file_to_tab(file)))
 		return (0);
-	if (0 == parser_cam(cam, (const char**)tab))
+	if (0 == parser_cam(e, (const char**)tab))
 		return (0);
-	if (0 == parser_obj(obj, (const char**)tab, 5))
+	if (0 == parser_obj(&e->obj, (const char**)tab, 5))
 		return (0);
 	i = 0;
 	while (tab[i] != NULL)

@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:22:15 by thou              #+#    #+#             */
-/*   Updated: 2017/05/22 18:17:55 by thou             ###   ########.fr       */
+/*   Updated: 2017/05/24 18:31:19 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int				mouse_hook_func(int button, int x, int y, t_env *e)
 int				key_hook_func(int key, t_env *e)
 {
 	if (key == KEY_ESC)
-		exit(0);
+		err_exit("EXIT");
 	if (key == KEY_V)
 		e->aa *= 2;
 	if (key == KEY_C)
@@ -36,7 +36,6 @@ int				key_hook_func(int key, t_env *e)
 		e->aa = 1;
 	if (key == KEY_H)
 		e->help *= -1;
-	ft_printf("[key : %d ]\n", key);
 	translate(key, e);
 	rotate_camera(key, e);
 	draw_obj(e);
