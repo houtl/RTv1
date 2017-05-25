@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 16:50:30 by thou              #+#    #+#             */
-/*   Updated: 2017/05/24 18:28:41 by thou             ###   ########.fr       */
+/*   Updated: 2017/05/25 13:28:05 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -245,7 +245,7 @@ void					light_position(t_env *e);
 */
 
 int						check_param(const char *str, int i, int max);
-t_vector				input_vector(const char *tab, int *i, double w);
+int						input_vector(const char *tab, int *i, double w, t_vector *vec);
 int						get_scene(t_env *e, char *file);
 
 /*

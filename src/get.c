@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:21:29 by thou              #+#    #+#             */
-/*   Updated: 2017/05/22 16:32:18 by thou             ###   ########.fr       */
+/*   Updated: 2017/05/25 17:43:21 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	get_colpos(t_obj *obj, const char **tab, int *i)
 	int		j;
 	double	check;
 
-	if (ft_strncmp("\t\tcol(", tab[*i], 6) || !(check_param(tab[*i], 6, 3)))
+	if (ft_strncmp("\t\tcol(", tab[*i], 6))
 		return (0);
 	j = 6;
 	if (0 > (check = ft_atof(tab[*i], &j)) || check > 255)
@@ -33,10 +33,8 @@ int	get_colpos(t_obj *obj, const char **tab, int *i)
 			ft_strncmp("\t\tpos(", tab[++(*i)], 6))
 		return (0);
 	j = 6;
-	SAFEMALLOC((check_param(tab[*i], j, 3)));
-	obj->pos = input_vector(tab[*i], &j, 1.0);
-	if (')' != tab[*i][j] || '\0' != tab[(*i)++][j + 1])
-		return (0);
+	SAFEMALL0((input_vector(tab[*i], &j, 1.0, &obj->pos)));
+	++(*i);
 	return (1);
 }
 
@@ -47,8 +45,9 @@ int	get_size(t_obj *obj, const char **tab, int *i)
 	if (ft_strncmp("\t\tsize(", tab[*i], 7))
 		return (0);
 	j = 7;
-	SAFEMALL0((check_param(tab[*i], j, 1)));
 	obj->size = ft_atof(tab[*i], &j);
+	while (ft_isdigit(tab[*i][j]))
+		++j;
 	if (')' != tab[*i][j] || '\0' != tab[*i][j + 1])
 		return (0);
 	++(*i);
@@ -62,10 +61,7 @@ int	get_rot(t_obj *obj, const char **tab, int *i)
 	if (ft_strncmp("\t\trot(", tab[*i], 6))
 		return (0);
 	j = 6;
-	SAFEMALLOC((check_param(tab[*i], j, 3)));
-	obj->rot = input_vector(tab[*i], &j, 0.0);
-	if (')' != tab[*i][j] || '\0' != tab[*i][j + 1])
-		return (0);
+	SAFEMALL0((input_vector(tab[*i], &j, 0.0, &obj->rot)));
 	++(*i);
 	return (1);
 }
