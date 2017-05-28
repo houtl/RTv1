@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:23:09 by thou              #+#    #+#             */
-/*   Updated: 2017/05/27 18:13:44 by thou             ###   ########.fr       */
+/*   Updated: 2017/05/28 15:05:42 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void		*init_env(t_env *e)
 	SAFEMALL((e->tab = init_tab()));
 	e->hit_obj = NULL;
 	e->aa = 1.0;
-	e->up = (t_vector){0.0, 1.0, 0.0, 0.0};
+	e->up = (t_vector){0.0, 1.0, 0.0};
 	e->obj = NULL;
 	e->is_obj_selected = 0;
 	e->help = -1;

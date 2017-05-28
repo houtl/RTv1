@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 16:50:30 by thou              #+#    #+#             */
-/*   Updated: 2017/05/28 15:00:59 by thou             ###   ########.fr       */
+/*   Updated: 2017/05/28 15:05:32 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ typedef struct			s_vector
 	double				x;
 	double				y;
 	double				z;
-	double				w;
 }						t_vector;
 
 typedef struct			s_matrix
