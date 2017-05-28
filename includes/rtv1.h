@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 16:50:30 by thou              #+#    #+#             */
-/*   Updated: 2017/05/28 16:05:50 by thou             ###   ########.fr       */
+/*   Updated: 2017/05/28 16:42:00 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -274,7 +274,8 @@ void					get_hit_point_info(t_hit *hit_point, t_obj *obj,
 **			objet_hit.c
 */
 
-void					draw_obj(t_env *e);
+void					drawer(t_env *e);
+void					put_image(t_env *e);
 
 /*
 **			ray.c
@@ -293,13 +294,6 @@ void					rotate_camera(int key, t_env *e);
 */
 
 void					translate(int key, t_env *e);
-
-/*
-**			translate_light.c
-*/
-
-void					translate_light(int key, t_vector r, t_vector n,
-						t_env *e);
 
 /*
 **			vector.c

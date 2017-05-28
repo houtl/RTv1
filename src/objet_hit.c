@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:23:31 by thou              #+#    #+#             */
-/*   Updated: 2017/05/28 14:50:18 by thou             ###   ########.fr       */
+/*   Updated: 2017/05/28 16:44:40 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static void		check_t(t_env *env, double sum[3], t_ray ray, t_obj *hit_obj)
 	sum_color(sum, &color, env->p, ADD);
 }
 
-static t_color	get_pixel_color(t_env *env, t_list *list, int x, int y)
+static t_color	get_pixel_color(t_env *env, int x, int y)
 {
 	double	sub[2];
 	t_ray	ray;
@@ -69,7 +69,7 @@ static t_color	get_pixel_color(t_env *env, t_list *list, int x, int y)
 		{
 			hit_obj = NULL;
 			current_ray(sub[0], sub[1], env, &ray);
-			env->t = find_closest_t(list, &ray, &hit_obj);
+			env->t = find_closest_t(env->obj, &ray, &hit_obj);
 			check_t(env, sum, ray, hit_obj);
 			sub[0] += 1.0 / env->aa;
 			env->p += 1;
@@ -80,7 +80,7 @@ static t_color	get_pixel_color(t_env *env, t_list *list, int x, int y)
 	return (color);
 }
 
-static void		drawer(t_list *list, t_env *e)
+void			drawer(t_env *e)
 {
 	int		x;
 	int		y;
@@ -92,15 +92,14 @@ static void		drawer(t_list *list, t_env *e)
 		y = -1;
 		while (++y < HEIGHT)
 		{
-			color = get_pixel_color(e, list, x, y);
+			color = get_pixel_color(e, x, y);
 			pixel_put(x, y, color, &e->mlx);
 		}
 	}
 }
 
-void			draw_obj(t_env *e)
+void			put_image(t_env *e)
 {
-	drawer(e->obj, e);
 	mlx_clear_window(e->mlx.mlx, e->mlx.win);
 	mlx_put_image_to_window(e->mlx.mlx, e->mlx.win, e->mlx.img, 0, 0);
 	display_cam_info(e);

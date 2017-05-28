@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:24:05 by thou              #+#    #+#             */
-/*   Updated: 2017/05/28 16:10:08 by thou             ###   ########.fr       */
+/*   Updated: 2017/05/28 16:30:42 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,4 @@ void		translate(int key, t_env *e)
 		e->is_obj_selected = 0;
 		e->hit_obj = NULL;
 	}
-//	translate_light(key, r, n, e);
 }
