@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 16:50:30 by thou              #+#    #+#             */
-/*   Updated: 2017/05/28 14:55:17 by thou             ###   ########.fr       */
+/*   Updated: 2017/05/28 15:00:59 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -212,7 +212,7 @@ int						clicked_obj_info(int x, int y, t_env *e);
 */
 
 t_color					get_color(int color);
-t_color					ft_color(t_obj *hit_obj);
+//t_color					ft_color(t_obj *hit_obj);
 void					pixel_put(int x, int y, t_color col, t_mlx *mlx);
 
 /*
