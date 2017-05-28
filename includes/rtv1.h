@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 16:50:30 by thou              #+#    #+#             */
-/*   Updated: 2017/05/28 16:42:00 by thou             ###   ########.fr       */
+/*   Updated: 2017/05/28 18:36:37 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -217,6 +217,7 @@ void					pixel_put(int x, int y, t_color col, t_mlx *mlx);
 **			file_to_obj.c
 */
 
+int						ft_a_atoi(const char *str, int *i);
 int						parser_obj(t_list **obj, const char **tab, int i);
 
 /*
@@ -287,7 +288,7 @@ void					current_ray(double x, double y, t_env *e, t_ray *ray);
 **			rotate_event.c
 */
 
-void					rotate_camera(int key, t_env *e);
+void					rotate(int key, t_env *e);
 
 /*
 **			translate_event.c

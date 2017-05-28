@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:22:15 by thou              #+#    #+#             */
-/*   Updated: 2017/05/28 16:42:30 by thou             ###   ########.fr       */
+/*   Updated: 2017/05/28 17:16:08 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int				key_hook_func(int key, t_env *e)
 		return(0);
 	}
 	translate(key, e);
-	rotate_camera(key, e);
+	rotate(key, e);
 	drawer(e);
 	put_image(e);
 	return (0);

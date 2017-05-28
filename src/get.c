@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:21:29 by thou              #+#    #+#             */
-/*   Updated: 2017/05/28 15:45:10 by thou             ###   ########.fr       */
+/*   Updated: 2017/05/28 18:38:17 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ int	get_colpos(t_obj *obj, const char **tab, int *i)
 	j = 6;
 	if (0 > (check = ft_atof(tab[*i], &j)) || check > 255)
 		return (0);
-	obj->color.r = (uint8_t)check;
+	obj->color.r = check;
 	if (0 > (check = ft_atof(tab[*i], &j)) || check > 255)
 		return (0);
-	obj->color.g = (uint8_t)check;
+	obj->color.g = check;
 	if (0 > (check = ft_atof(tab[*i], &j)) || check > 255)
 		return (0);
-	obj->color.b = (uint8_t)check;
+	obj->color.b = check;
 	if (')' != tab[*i][j] || '\0' != tab[*i][j + 1] ||
 			ft_strncmp("\t\tpos(", tab[++(*i)], 6))
 		return (0);

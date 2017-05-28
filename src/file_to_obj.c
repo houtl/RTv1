@@ -6,11 +6,21 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:21:09 by thou              #+#    #+#             */
-/*   Updated: 2017/05/25 17:43:49 by thou             ###   ########.fr       */
+/*   Updated: 2017/05/28 18:33:02 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
+
+int			ft_a_atoi(const char *str, int *i)
+{
+	int n;
+
+	n = ft_atoi(str + *i);
+	while (ft_isdigit(str[*i]))
+		++(*i);
+	return (n);
+}
 
 static int	get_light_info(t_obj *obj, const char **tab, int *i)
 {
