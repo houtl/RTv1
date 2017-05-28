@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:21:44 by thou              #+#    #+#             */
-/*   Updated: 2017/05/22 13:34:47 by thou             ###   ########.fr       */
+/*   Updated: 2017/05/28 16:21:19 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,6 @@ void		light_position(t_env *e)
 		}
 		tmp = tmp->next;
 	}
-	while (e->total_light < MAX_LIGHT)
-		e->light[e->total_light++] = NULL;
+	if (e->total_light < MAX_LIGHT)
+		e->light[e->total_light] = NULL;
 }
