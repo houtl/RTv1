@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 16:50:30 by thou              #+#    #+#             */
-/*   Updated: 2017/05/25 13:28:05 by thou             ###   ########.fr       */
+/*   Updated: 2017/05/28 14:55:17 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@
 # define CONE		4
 # define SPHERE		5
 
+# define RGB(r, g, b)(256 * 256 * (int)r + 256 * (int)g + (int)b)
 # define SAFEMALL(x) if (!x) return (NULL);
 # define SAFEMALL0(x) if (!x) return (0);
 # define MAX_LIGHT	10
@@ -62,9 +63,9 @@ typedef struct			s_matrix
 
 typedef struct			s_color
 {
-	uint8_t				r;
-	uint8_t				g;
-	uint8_t				b;
+	int					r;
+	int					g;
+	int					b;
 }						t_color;
 
 typedef struct			s_cam
@@ -137,7 +138,7 @@ typedef struct			s_mlx
 	void				*win;
 	void				*img;
 	char				*data;
-	int					size_line;
+	int					sl;
 	int					endian;
 	int					bpp;
 }						t_mlx;
@@ -245,7 +246,8 @@ void					light_position(t_env *e);
 */
 
 int						check_param(const char *str, int i, int max);
-int						input_vector(const char *tab, int *i, double w, t_vector *vec);
+int						input_vector(const char *tab, int *i,
+							double w, t_vector *vec);
 int						get_scene(t_env *e, char *file);
 
 /*

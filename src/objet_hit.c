@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:23:31 by thou              #+#    #+#             */
-/*   Updated: 2017/05/25 18:15:11 by thou             ###   ########.fr       */
+/*   Updated: 2017/05/28 14:50:18 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,29 +53,29 @@ static void		check_t(t_env *env, double sum[3], t_ray ray, t_obj *hit_obj)
 
 static t_color	get_pixel_color(t_env *env, t_list *list, int x, int y)
 {
-//	double	sub[2];
+	double	sub[2];
 	t_ray	ray;
 	t_obj	*hit_obj;
 	double	sum[3];
 	t_color	color;
 
-//	sub[1] = y;
+	sub[1] = y;
 	sum_color(sum, &color, env->p, INIT);
 	env->p = 0.0;
-//	while (sub[1] < y + 1)
-//	{
-//		sub[0] = x;
-//		while (sub[0] < x + 1)
-//		{
+	while (sub[1] < y + 1)
+	{
+		sub[0] = x;
+		while (sub[0] < x + 1)
+		{
 			hit_obj = NULL;
-			current_ray(x, y, env, &ray);
+			current_ray(sub[0], sub[1], env, &ray);
 			env->t = find_closest_t(list, &ray, &hit_obj);
 			check_t(env, sum, ray, hit_obj);
-//			sub[0] += 1.0 / env->aa;
+			sub[0] += 1.0 / env->aa;
 			env->p += 1;
-//		}
-//		sub[1] += 1.0 / env->aa;
-//	}
+		}
+		sub[1] += 1.0 / env->aa;
+	}
 	sum_color(sum, &color, env->p, SUM);
 	return (color);
 }
@@ -87,13 +87,13 @@ static void		drawer(t_list *list, t_env *e)
 	t_color	color;
 
 	x = -1;
-	while (++x < HEIGHT)
+	while (++x < WIDTH)
 	{
 		y = -1;
-		while (++y < WIDTH)
+		while (++y < HEIGHT)
 		{
-			color = get_pixel_color(e, list, y, x);
-			pixel_put(y, x, color, &e->mlx);
+			color = get_pixel_color(e, list, x, y);
+			pixel_put(x, y, color, &e->mlx);
 		}
 	}
 }

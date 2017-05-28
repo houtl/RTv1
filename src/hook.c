@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:22:15 by thou              #+#    #+#             */
-/*   Updated: 2017/05/25 12:35:18 by thou             ###   ########.fr       */
+/*   Updated: 2017/05/28 14:56:41 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ int				mouse_hook_func(int button, int x, int y, t_env *e)
 		if (1 == clicked_obj_info(x, y, e))
 			if (e->is_obj_selected == 1)
 			{
-				mlx_put_image_to_window(e->mlx.mlx, e->mlx.win, e->mlx.img, 0, 0);
+				mlx_put_image_to_window(e->mlx.mlx, e->mlx.win,
+						e->mlx.img, 0, 0);
 				display_cam_info(e);
 				display_info1(e);
 				display_info2(e, e->hit_obj);

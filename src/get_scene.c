@@ -6,18 +6,17 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:21:58 by thou              #+#    #+#             */
-/*   Updated: 2017/05/25 18:10:29 by thou             ###   ########.fr       */
+/*   Updated: 2017/05/28 14:58:06 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-int		input_vector(const char *str, int *i, double w, t_vector *vec)
+int			input_vector(const char *str, int *i, double w, t_vector *vec)
 {
-	int words;
+	int		words;
 
-    words = 0;
-
+	words = 0;
 	while (str[*i] != '\0' && str[*i] != ')')
 	{
 		while (ft_iswhitespace(str[*i]) == 1)
@@ -38,7 +37,7 @@ int		input_vector(const char *str, int *i, double w, t_vector *vec)
 
 static int	parser_cam(t_env *e, const char **tab)
 {
-	int	i;
+	int		i;
 
 	if (ft_strcmp("camera", tab[0]) || ft_strcmp("{", tab[1]) ||
 			ft_strncmp("\tpos(", tab[2], 5))

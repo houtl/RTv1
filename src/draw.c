@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:20:45 by thou              #+#    #+#             */
-/*   Updated: 2017/05/25 12:54:10 by thou             ###   ########.fr       */
+/*   Updated: 2017/05/28 14:55:48 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,21 +26,17 @@ t_color	ft_color(t_obj *hit_obj)
 {
 	t_color	col;
 
-	col.r = (uint8_t)hit_obj->color.r;
-	col.g = (uint8_t)hit_obj->color.g;
-	col.g = (uint8_t)hit_obj->color.b;
+	col.r = hit_obj->color.r;
+	col.g = hit_obj->color.g;
+	col.g = hit_obj->color.b;
 	return (col);
 }
 
 void	pixel_put(int x, int y, t_color col, t_mlx *mlx)
 {
-	int	index;
-
-	if (x >= 0 && y >= 0 && x < WIDTH && y < HEIGHT)
+	if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT)
 	{
-		index = y * mlx->size_line + (x * (mlx->bpp / 8));
-		mlx->data[index] = *((char*)&col.b);
-		mlx->data[++index] = *((char*)&col.g);
-		mlx->data[++index] = *((char*)&col.r);
+		*(unsigned int*)(mlx->data + (x * (mlx->bpp / 8)) + (y * mlx->sl)) =
+			RGB(col.r, col.g, col.b);
 	}
 }

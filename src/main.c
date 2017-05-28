@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:23:09 by thou              #+#    #+#             */
-/*   Updated: 2017/05/24 18:31:35 by thou             ###   ########.fr       */
+/*   Updated: 2017/05/27 18:13:44 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void		*init_env(t_env *e)
 	SAFEMALL((e->mlx.win = mlx_new_window(e->mlx.mlx, WIDTH, HEIGHT, "rtv1")));
 	SAFEMALL((e->mlx.img = mlx_new_image(e->mlx.mlx, WIDTH, HEIGHT)));
 	e->mlx.data = mlx_get_data_addr(e->mlx.img, &(e->mlx.bpp),
-						&(e->mlx.size_line), &(e->mlx.endian));
+						&(e->mlx.sl), &(e->mlx.endian));
 	SAFEMALL((e->tab = init_tab()));
 	e->hit_obj = NULL;
 	e->aa = 1.0;
