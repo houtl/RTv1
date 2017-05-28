@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:24:44 by thou              #+#    #+#             */
-/*   Updated: 2017/05/19 18:24:47 by thou             ###   ########.fr       */
+/*   Updated: 2017/05/28 15:14:55 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void		normalize(t_vector *v1)
 	v1->x = v1->x * norm;
 	v1->y = v1->y * norm;
 	v1->z = v1->z * norm;
-	v1->w = 0.0;
 }
 
 double		prodscal(t_vector *v1, t_vector *v2)
@@ -38,6 +37,5 @@ t_vector	opposite(t_vector *v)
 	n.x = -1.0 * v->x;
 	n.y = -1.0 * v->y;
 	n.z = -1.0 * v->z;
-	n.w = v->w;
 	return (n);
 }

@@ -6,13 +6,13 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:21:58 by thou              #+#    #+#             */
-/*   Updated: 2017/05/28 14:58:06 by thou             ###   ########.fr       */
+/*   Updated: 2017/05/28 15:14:25 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-int			input_vector(const char *str, int *i, double w, t_vector *vec)
+int			input_vector(const char *str, int *i, t_vector *vec)
 {
 	int		words;
 
@@ -31,7 +31,6 @@ int			input_vector(const char *str, int *i, double w, t_vector *vec)
 	}
 	if (str[*i] != ')' || str[*i + 1] != 0)
 		return (0);
-	vec->w = w;
 	return (words == 3 ? 1 : 0);
 }
 
@@ -43,11 +42,11 @@ static int	parser_cam(t_env *e, const char **tab)
 			ft_strncmp("\tpos(", tab[2], 5))
 		return (0);
 	i = 5;
-	SAFEMALL0((input_vector(tab[2], &i, 1.0, &e->cam.pos)));
+	SAFEMALL0((input_vector(tab[2], &i, &e->cam.pos)));
 	if (ft_strcmp(")", &tab[2][i]) || ft_strncmp("\tdir(", tab[3], 5))
 		return (0);
 	i = 5;
-	SAFEMALL0((input_vector(tab[3], &i, 1.0, &e->cam.dir)));
+	SAFEMALL0((input_vector(tab[3], &i, &e->cam.dir)));
 	e->cam.lookat = e->cam.dir;
 	if (0 != ft_strcmp("}", tab[4]))
 		return (0);

@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:24:32 by thou              #+#    #+#             */
-/*   Updated: 2017/05/19 18:24:34 by thou             ###   ########.fr       */
+/*   Updated: 2017/05/28 15:12:28 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ t_vector	subvect(t_vector *v1, t_vector *v2)
 	v.x = v2->x - v1->x;
 	v.y = v2->y - v1->y;
 	v.z = v2->z - v1->z;
-	v.w = 0.0;
 	return (v);
 }
 
@@ -30,7 +29,6 @@ t_vector	addvect(t_vector *v1, t_vector *v2)
 	v.x = v2->x + v1->x;
 	v.y = v2->y + v1->y;
 	v.z = v2->z + v1->z;
-	v.w = 0.0;
 	return (v);
 }
 
@@ -41,7 +39,6 @@ t_vector	scalevect(double k, t_vector *v1)
 	v.x = k * v1->x;
 	v.y = k * v1->y;
 	v.z = k * v1->z;
-	v.w = 0.0;
 	return (v);
 }
 
@@ -61,6 +58,5 @@ t_vector	crossvect(t_vector *v1, t_vector *v2)
 	v.x = v1->y * v2->z - v1->z * v2->y;
 	v.y = v2->x * v1->z - v2->z * v1->x;
 	v.z = v1->x * v2->y - v1->y * v2->x;
-	v.w = 0.0;
 	return (v);
 }
