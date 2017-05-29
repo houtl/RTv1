@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:22:15 by thou              #+#    #+#             */
-/*   Updated: 2017/05/28 17:16:08 by thou             ###   ########.fr       */
+/*   Updated: 2017/05/29 14:58:35 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int				key_hook_func(int key, t_env *e)
 		e->hit_obj = e->light[e->l];
 		e->is_obj_selected = 1;
 		put_image(e);
-		return(0);
+		return (0);
 	}
 	translate(key, e);
 	rotate(key, e);

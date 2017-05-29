@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:23:31 by thou              #+#    #+#             */
-/*   Updated: 2017/05/28 16:44:40 by thou             ###   ########.fr       */
+/*   Updated: 2017/05/29 15:05:43 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,9 +104,6 @@ void			put_image(t_env *e)
 	mlx_put_image_to_window(e->mlx.mlx, e->mlx.win, e->mlx.img, 0, 0);
 	display_cam_info(e);
 	if (e->is_obj_selected == 1)
-	{
-		display_info1(e);
-		display_info2(e, e->hit_obj);
-	}
+		display_info(e);
 	ft_put_info(e);
 }

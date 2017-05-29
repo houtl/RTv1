@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:20:32 by thou              #+#    #+#             */
-/*   Updated: 2017/05/22 14:28:59 by thou             ###   ########.fr       */
+/*   Updated: 2017/05/29 15:07:06 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static void	display_hit_obj_info(t_env *e)
 	ft_strdel(&s2);
 }
 
-void		display_info1(t_env *e)
+void		display_info(t_env *e)
 {
 	if (e->is_obj_selected)
 	{
@@ -70,23 +70,13 @@ void		display_info1(t_env *e)
 				"pos:[");
 		mlx_string_put(e->mlx.mlx, e->mlx.win, 392, 435, 0x00FEDC,
 				e->itoapos);
-	}
-}
-
-void		display_info2(t_env *e, t_obj *obj)
-{
-	int			i;
-
-	i = -1;
-	if (e->hit_obj)
-	{
 		if (e->hit_obj->name == SPHERE || e->hit_obj->name == CYLINDER
 				|| e->hit_obj->name == CONE)
 		{
 			e->itoasize = 0;
 			mlx_string_put(e->mlx.mlx, e->mlx.win, 340, 455, 0x00FEDC,
 					"size:[");
-			e->itoasize = ft_itoa(obj->size);
+			e->itoasize = ft_itoa(e->hit_obj->size);
 			mlx_string_put(e->mlx.mlx, e->mlx.win, 400, 455, 0x00FEDC,
 					e->itoasize);
 			mlx_string_put(e->mlx.mlx, e->mlx.win, 420, 455, 0x00FEDC, "]");

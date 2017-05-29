@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 16:50:30 by thou              #+#    #+#             */
-/*   Updated: 2017/05/28 18:36:37 by thou             ###   ########.fr       */
+/*   Updated: 2017/05/29 15:06:07 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,6 +147,8 @@ typedef struct			s_env
 	t_mlx				mlx;
 	t_cam				cam;
 	t_list				*obj;
+	t_vector			n;
+	t_vector			r;
 	t_vector			up;
 	double				aa;
 	double				t;
@@ -203,8 +205,7 @@ void					display_cam_info(t_env *e);
 */
 
 void					ft_put_info(t_env *e);
-void					display_info1(t_env *e);
-void					display_info2(t_env *e, t_obj *obj);
+void					display_info(t_env *e);
 int						clicked_obj_info(int x, int y, t_env *e);
 
 /*
